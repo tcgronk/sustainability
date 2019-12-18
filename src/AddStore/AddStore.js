@@ -17,7 +17,6 @@ export default class AddStore extends Component {
     validateEntry=(e)=>{
         e.preventDefault();
        
- 
 
         //add testing
 
