@@ -56,11 +56,11 @@ export default class AddStore extends Component {
             lastdatemodified: today,
             comments: e.target['comments'].value,
             packaging: e.target['packaging'].value,
+            categoryname: e.target['categories'].value,
             category: categoryid,
             rating: e.target['storeRating'].value
 
         }
-        console.log(store)
         this.context.handleAddStore(store)
         this.props.history.push(`/`)
     }

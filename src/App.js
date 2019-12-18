@@ -17,26 +17,29 @@ export default class App extends Component {
       categories: dummystore.categories,
       ratings: dummystore.ratings,
       packaging: dummystore.packaging,
-      id: ''
+      saved: ''
+
     }
   }
   static contextType = ApiContext    
 
-  handleId=(id)=>{
-    console.log('hi')
-    this.setState({
-      id: id
-    })
-  }
 
   handleAddStore=(store)=>{
+
+    
     this.setState({
       stores: [ ...this.state.stores,
-      store]
-    })
-    console.log(this.state.stores)
-  }
+      store],
+      saved: `Store saved to the ${store.categoryname} section!`
 
+      
+    })
+    
+    
+  }
+  componentDidUpdate(){
+    setTimeout(() => this.setState({saved:''}), 2000);
+  }
 
 
   renderMainRoutes(){
@@ -58,9 +61,7 @@ export default class App extends Component {
     )
   }
   render(){
-  const categories = this.state.categories
- console.log(this.state.stores)
-  
+
   return (
     <ApiContext.Provider value={{
       stores: this.state.stores,
@@ -74,7 +75,11 @@ export default class App extends Component {
         <Nav />
 
       </header>
+
       <main>
+        <br/>
+      <h3>{this.state.saved}</h3>
+
       <span>{this.renderMainRoutes()}</span>
       </main>
     </div>
