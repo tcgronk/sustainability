@@ -1,77 +1,173 @@
 import React, {Component} from 'react'
+import ApiContext from '../ApiContext'
+import { getDefaultWatermarks } from 'istanbul-lib-report';
+
 
 
 
 export default class AddStore extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            formValid:true
+        }
+    }
+    static contextType = ApiContext
+
+    validateEntry=(e)=>{
+        e.preventDefault();
+       
+ 
+
+        //add testing
+
+        this.setState({
+            formValid: true
+        })
+
+        
+
+    }
+
+    handleSubmit(e){
+        e.preventDefault();
+        let categoryid=e.target['categories'].value
+        if(categoryid==="Food & Coffee"){
+            categoryid =1
+        }
+        else if(categoryid==="Clothing"){
+            categoryid =2
+        }
+        else if(categoryid==="Luxury Goods"){
+            categoryid =3
+        }
+        else if(categoryid==="Homeware"){
+            categoryid =4
+        }
+        else if(categoryid==="Beauty"){
+            categoryid =5
+        }
+        else categoryid='Null'
+        let date=new Date();
+        let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
+        const store = {
+            storename: e.target['storename'].value,
+            website: e.target['website'].value,
+            lastdatemodified: today,
+            comments: e.target['comments'].value,
+            packaging: e.target['packaging'].value,
+            category: categoryid,
+            rating: e.target['storeRating'].value
+
+        }
+        console.log(store)
+        this.context.handleAddStore(store)
+        this.props.history.push(`/`)
+    }
+
+    handleCancelAdd = () => {
+        this.props.history.push(`/`)
+      }
+
   render(){
+    const ratings = this.context.ratings
+    const options = ratings.map((rating) => {
+        return(
+          <option
+            key= {rating.ratingid}
+            value = {rating.ratingid}>
+            {rating.description}
+          </option>
+        )
+      })
+      const categories = this.context.categories
+      const categoryList = categories.map((category) => {
+          return(
+            <option
+              key= {category.categoryid}
+              value = {category.categoryid}>
+              {category.name}
+            </option>
+          )
+        })
+        const packagings = this.context.packaging
+        const packingList = packagings.map((packaging) => {
+            return(
+              <option
+                key= {packaging.packagingid}
+                value = {packaging.packagingid}>
+                {packaging.description}
+              </option>
+            )
+          })
   return (
     <div className="Add-Store">
         <p>Add a New Store</p>
         <section>
-        <form id="record-store">
+        <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div class="form-section">
-            <label for="store-title">Store Name</label>
-            <input type="text" name="store-name" placeholder="Store Name" required/>
-            <label for="store-info">Website</label>
-            <textarea name="store-info" rows="1"   required></textarea>
+            <label for="storename">Store Name</label>
+            <input type="text" name="storename"id="storename" placeholder="Store Name" value={this.storename} onChange={e => this.validateEntry(e)} required/>
+            <label for="website">Website</label>
+            <textarea name="website" rows="1" id="website" value={this.website} onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
-            <label for="sustainability-comments">Sustainable Business Practices</label>
+            <label for="comments">Sustainable Business Practices</label>
             <br/>
-            <textarea name="sustainability-comments" rows="12"   required></textarea>
+            <textarea name="comments" rows="12" id="comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
-                <label for="sustainability-packaging">Sustainable Packaging</label>
-                <input type="radio" name="sustainability-packaging" value="Yes" class="packaging-radio" checked/><span>Yes</span>
-                <input type="radio" name="sustainability-packaging" value="Somewhat" class="dream-type-radio" /><span>Somewhat</span>
-                <input type="radio" name="sustainability-packaging" value="No" class="packaging-radio" /><p>No</p>
+                <label for="packaging">Sustainable Packaging</label>
+                <label htmlFor="packaging"><br/>Categories:{" "}<br/></label>
+            <select
+            type='text'
+            className='field'
+            name='packaging'
+            id='packaging'
+            ref={this.context.packaging }
+            onChange={e => this.validateEntry(e)}>
+                <option value={ null }>Sustainable Packaging?</option>
+                { packingList}
+            </select>
             </div>
             <br/>
             <div class="form-section">
-                <p>Select category </p>
-                <input type="radio" name="store-category" value="0" class="store-category-radio" checked/>
-                <label for="store-category"><span>Food & Coffee</span></label>
-                <input type="radio" name="store-category" value="1" class="store-category-radio"/>
-                <label for="store-category"><span>Clothing</span></label>
-                <input type="radio" name="store-category" value="2" class="store-category-radio"/>
-                <label for="store-category"><span>Luxury Goods</span></label>
-                <input type="radio" name="store-category" value="3" class="store-category-radio"/>
-                <label for="store-category"><span>Homewares</span></label>
-                <input type="radio" name="store-category" value="4" class="store-category-radio"/>
-                <label for="store-category">
-                    <span>Beauty</span>
+            <label htmlFor="categories"><br/>Categories:{" "}<br/></label>
+            <select
+            type='text'
+            className='field'
+            name='categories'
+            id='categories'
+            ref={this.context.categories }
+            onChange={e => this.validateEntry(e)}>
+                <option value={ null }>Select Categories</option>
+                { categoryList}
+            </select>
 
-                </label>
             </div>
             <br/>
             <div class="form-section">
             <p>Select Rating </p>
             <p> Rate the level of sustainable business practices from 1 somewhat sustainable, 2 significant sustainability efforts, 3 excellent sustainability, 4 totally waste free.</p>
-                <input type="radio" name="dream-type" value="0" class="dream-type-radio" checked/>
-                <label for="dream-type"><span>1</span></label>
-                <input type="radio" name="dream-type" value="1" class="dream-type-radio"/>
-                <label for="dream-type">
-                    <span>2</span>
-                </label>
 
-            <input type="radio" name="dream-type" value="2" class="dream-type-radio"/>
-            <label for="dream-type">
-              <span>3</span>
-
-            </label>
-
-            <input type="radio" name="dream-type" value="3" class="dream-type-radio"/>
-            <label for="dream-type">
-              <span>4</span>
-
-            </label>
-          </div>
-
-          <button type="submit">Submit</button>
-          <button type="reset">Reset</button>
+          <label htmlFor="store-rating"><br/>Rating:{" "}<br/></label>
+            <select
+            type='text'
+            className='field'
+            name='storeRating'
+            id='storeRating'
+            ref={this.context.options }
+            onChange={e => this.validateEntry(e)}>
+                <option value={ null }>Select Rating</option>
+                { options }
+            </select>
+            </div>
+          <button type="submit"  disabled={!this.state.formValid}>Submit</button>
+          <button type="reset"onClick={e => this.handleCancelAdd()}>Cancel</button>
         </form>
       </section>
     </div>
   );
   }
 }
+

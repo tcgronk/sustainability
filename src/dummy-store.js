@@ -7,7 +7,7 @@ export default {
         "last-date-modified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": true,
-        "category":"Food & Coffee",
+        "category":1,
         "rating": 3
     },
     {
@@ -17,7 +17,7 @@ export default {
         "last-date-modified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": true,
-        "category":"Food & Coffee",
+        "category":1,
         "rating": 3,
     },
     {
@@ -27,7 +27,7 @@ export default {
         "last-date-modified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": true,
-        "category":"Clothing",
+        "category":2,
         "rating": 4
     },
     {
@@ -37,7 +37,7 @@ export default {
         "last-date-modified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": true,
-        "category":"Beauty",
+        "category":5,
         "rating": 4
     },
 

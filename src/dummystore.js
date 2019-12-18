@@ -4,40 +4,40 @@ export default {
         "id": 1 ,
         "storename": "Good Eggs",
         "website": "www.goodeggs.com",
-        "last-date-modified": "12/14/19",
+        "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
-        "packaging": true,
-        "category":"Food & Coffee",
+        "packaging": "Somewhat",
+        "category":1,
         "rating": 3
     },
     {
         "id": 2 ,
         "storename": "Blue Bottle",
         "website": "www.bluebottle.com",
-        "last-date-modified": "12/14/19",
+        "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
-        "packaging": true,
-        "category":"Food & Coffee",
+        "packaging": "Yes",
+        "category":1,
         "rating": 3,
     },
     {
         "id": 3 ,
         "storename": "Reformation",
         "website": "www.reformation.com",
-        "last-date-modified": "12/14/19",
+        "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
-        "packaging": true,
-        "category":"Clothing",
+        "packaging": "Yes",
+        "category":2,
         "rating": 4
     },
     {
         "id": 4 ,
         "storename": "Lush",
         "website": "www.lush.com",
-        "last-date-modified": "12/14/19",
+        "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
-        "packaging": true,
-        "category":"Beauty",
+        "packaging": "Yes",
+        "category":5,
         "rating": 4
     },
 
@@ -58,6 +58,24 @@ export default {
     { "id":5,
     "name":"Beauty"
     },
+    ],
+    "ratings":[
+        {"id":1, 
+        "description": "Somewhat"},
+        {"id":2, 
+        "description": "Significant"},
+        {"id":3, 
+        "description": "Excellent"},
+        {"id":4, 
+        "description": "Waste Free"},
+    ],
+    "packaging":[
+        {"id":1, 
+        "description": "Yes"},
+        {"id":2, 
+        "description": "Somewhat"},
+        {"id":3, 
+        "description": "No"},
     ]
 
 }
