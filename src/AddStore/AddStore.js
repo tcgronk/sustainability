@@ -106,7 +106,7 @@ export default class AddStore extends Component {
           })
   return (
     <div className="Add-Store">
-        <p>Add a New Store</p>
+        <p>Do you know of store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out!</p>
         <section>
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div class="form-section">
@@ -121,7 +121,7 @@ export default class AddStore extends Component {
             </div>
             <br/>
             <div>
-                <label for="packaging">Sustainable Packaging</label>
+                <label for="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
                 <label htmlFor="packaging"><br/>Categories:{" "}<br/></label>
             <select
             type='text'
@@ -152,7 +152,7 @@ export default class AddStore extends Component {
             <br/>
             <div class="form-section">
             <p>Select Rating </p>
-            <p> Rate the level of sustainable business practices from 1 somewhat sustainable, 2 significant sustainability efforts, 3 excellent sustainability, 4 totally waste free.</p>
+            <p> Based on your experience, rate the level of sustainable business practices from 1 somewhat sustainable, 2 significant sustainability efforts, 3 excellent sustainability, 4 totally waste free.</p>
 
           <label htmlFor="store-rating"><br/>Rating:{" "}<br/></label>
             <select
