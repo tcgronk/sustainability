@@ -54,8 +54,7 @@ export default class App extends Component {
       {['/store/:id'].map(path =>(
         <Route  
         exact
-        key={path}
-        
+        key={path} 
         path={path} component={Stores}/> 
         ))}      
       {['/category/:id'].map(path =>(

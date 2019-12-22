@@ -13,17 +13,17 @@ export default class CategoryStoreList extends Component {
 
     
     const categoryId= parseInt(this.props.match.params.id)
-    const stores=this.context.stores
-    const category=this.context.categories
-    const storeArr=[]
+    // const stores=this.context.stores
+    // const category=this.context.categories
+    // const storeArr=[]
+    // console.log(categoryId)
+    // for(let i=0; i<stores.length; i++){
+    //   console.log(stores[i].category)
+    //   if(stores[i].category===categoryId){
+    //     storeArr.push(stores[i])
+    //   }
+    // }
     console.log(categoryId)
-    for(let i=0; i<stores.length; i++){
-      console.log(stores[i].category)
-      if(stores[i].category===categoryId){
-        storeArr.push(stores[i])
-      }
-    }
-    console.log(storeArr)
         return (
             <div className="CategoryStoreList">
 

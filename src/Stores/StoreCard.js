@@ -8,14 +8,13 @@ export default class StoreCard extends Component {
 
     render(){
     const stores= this.context.stores
-    console.log(stores)
     // const id=parseInt((this.props.match.params.id).slice(1),10)
     const id=parseInt(this.props.id,10)
     console.log(id)
     const storeArr=[]
     for(let i=0; i<stores.length; i++){
       console.log(stores[i].category)
-      if(stores[i].id===id){
+      if(stores[i].category===id){
         storeArr.push(stores[i])
       }
     }
@@ -30,14 +29,14 @@ export default class StoreCard extends Component {
              <>
              <br/>   
                     
-            <Link to={`store/:${store.id}`} ><li>{store.storename}</li></Link>
+            <Link to={`/store/:${store.id}`} ><li>{store.storename}</li></Link>
                    
             <br/> 
             <li>{store.website}</li> 
             <br/> 
             <li>{store.packaging}</li> 
             <br/> 
-            <li>{store.rating}</li> 
+            <li>Rating:{store.rating}</li> 
             <br/> 
             <li>Last Modified: {store.lastdatemodified}</li> 
                    

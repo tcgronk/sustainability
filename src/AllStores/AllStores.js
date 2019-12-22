@@ -24,7 +24,7 @@ export default class AllStores extends Component {
                    <br/> 
             <li>{store.packaging}</li> 
             <br/> 
-            <li>{store.rating}</li> 
+            <li>Rating: {store.rating}</li> 
             <br/> 
             <li>Last Modified: {store.lastdatemodified}</li> 
                    
