@@ -86,6 +86,7 @@ export default class App extends Component {
 
       <main>
         <br/>
+      <p>Find sustainable stores & add new stores to the list!</p>
       <h3>{this.state.saved}</h3>
       <Link to='/all-stores'><button>All stores</button></Link>
       <Link to='/'><button>Back to All Categories</button></Link>

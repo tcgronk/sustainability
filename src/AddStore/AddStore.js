@@ -30,6 +30,9 @@ export default class AddStore extends Component {
 
     handleSubmit(e){
         e.preventDefault();
+
+        let stores=this.context.stores
+
         let categoryid=e.target['categories'].value
         if(categoryid==="Food & Coffee"){
             categoryid =1
@@ -49,7 +52,9 @@ export default class AddStore extends Component {
         else categoryid='Null'
         let date=new Date();
         let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
+        console.log(stores.length)
         const store = {
+            id: parseInt(stores.length+1,10),
             storename: e.target['storename'].value,
             website: e.target['website'].value,
             lastdatemodified: today,
