@@ -13,7 +13,7 @@ export default {
     {
         "id": 2 ,
         "storename": "Blue Bottle",
-        "website": "www.bluebottle.com",
+        "website": "www.bluebottlecoffee.com",
         "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": "Yes",
@@ -23,7 +23,7 @@ export default {
     {
         "id": 3 ,
         "storename": "Reformation",
-        "website": "www.reformation.com",
+        "website": "www.thereformation.com",
         "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": "Yes",
@@ -33,7 +33,7 @@ export default {
     {
         "id": 4 ,
         "storename": "Lush",
-        "website": "www.lush.com",
+        "website": "www.lushusa.com",
         "lastdatemodified": "12/14/19",
         "comments": "Praesent sagittis a mi sit amet dictum. Donec orci nibh, dignissim in leo et, congue semper mauris. Donec elit lacus, dictum et placerat eget, rhoncus sodales erat. Curabitur sit amet placerat neque, a tempus mi. Suspendisse a tempus dolor. Nullam porttitor nisi sed justo dictum consequat. Etiam sed congue felis.",
         "packaging": "Yes",

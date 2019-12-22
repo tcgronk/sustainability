@@ -8,6 +8,7 @@ import CategoryStoreList from './CategoryStoreList/CategoryStoreList.js';
 import CategoryList from './CategoryStoreList/CategoryList.js';
 import ApiContext from './ApiContext'
 import AllStores from './AllStores/AllStores'
+import Stores from './Stores/Stores'
 
 
 export default class App extends Component {
@@ -31,7 +32,7 @@ export default class App extends Component {
     this.setState({
       stores: [ ...this.state.stores,
       store],
-      saved: `Store saved to the ${store.categoryname} section!`
+      saved: `${store.storename} saved to the ${store.categoryname} section!`
 
       
     })
@@ -39,7 +40,7 @@ export default class App extends Component {
     
   }
   componentDidUpdate(){
-    setTimeout(() => this.setState({saved:''}), 2000);
+    setTimeout(() => this.setState({saved:''}), 5000);
   }
 
 
@@ -47,9 +48,16 @@ export default class App extends Component {
     const id=this.state.id
     return(
       <span>
-      <Route exact path='/all-stores' component={()=><AllStores stores={this.state.stores} />}></Route>
-      <Route exact path='/' component={()=><CategoryList handleId={()=>this.handleId} categories={this.state.categories} stores={this.state.stores}/>}/>
+      <Route exact path='/all-stores' component={AllStores}></Route>
+      <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
+      {['/store/:id'].map(path =>(
+        <Route  
+        exact
+        key={path}
+        
+        path={path} component={Stores}/> 
+        ))}      
       {['/category/:id'].map(path =>(
         <Route  
         exact
@@ -81,7 +89,7 @@ export default class App extends Component {
         <br/>
       <h3>{this.state.saved}</h3>
       <Link to='/all-stores'><button>All stores</button></Link>
-      <Link to='/'><button>Back to Home</button></Link>
+      <Link to='/'><button>Back to All Categories</button></Link>
       <span>{this.renderMainRoutes()}</span>
       </main>
     </div>

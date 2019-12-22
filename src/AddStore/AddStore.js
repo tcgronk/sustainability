@@ -124,7 +124,7 @@ export default class AddStore extends Component {
             name='packaging'
             id='packaging'
             ref={this.context.packaging }
-            onChange={e => this.validateEntry(e)}>
+            onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Sustainable Packaging?</option>
                 { packingList}
             </select>
@@ -138,7 +138,7 @@ export default class AddStore extends Component {
             name='categories'
             id='categories'
             ref={this.context.categories }
-            onChange={e => this.validateEntry(e)}>
+            onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Categories</option>
                 { categoryList}
             </select>
@@ -156,7 +156,7 @@ export default class AddStore extends Component {
             name='storeRating'
             id='storeRating'
             ref={this.context.options }
-            onChange={e => this.validateEntry(e)}>
+            onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Rating</option>
                 { options }
             </select>

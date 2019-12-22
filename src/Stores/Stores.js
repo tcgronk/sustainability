@@ -1,32 +1,46 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext'
 
 
-export default class AllStores extends Component {
-
+export default class Stores extends Component {
   static contextType = ApiContext    
 
     render(){
-       const stores = this.context.stores
+    const stores= this.context.stores
+    console.log(stores)
+    const id=parseInt((this.props.match.params.id).slice(1),10)
+    console.log(id)
+    const storeArr=[]
+    for(let i=0; i<stores.length; i++){
+      console.log(stores[i].category)
+      if(stores[i].id===id){
+        storeArr.push(stores[i])
+      }
+    }
+  
     return (
-    <div className="AllStores">
-        <ul>
-        {stores.map(store =>
+    <div className="Stores">
+     
+
+
+<ul>
+        {storeArr.map(store =>
              <>
              <br/>   
                     
-             <Link to={`store/:${store.id}`} ><li>{store.storename}</li></Link>
+             <li>{store.storename}</li>
                    
             <br/> 
             <li>{store.website}</li> 
                    
                    <br/> 
+            <li>{store.comments}</li> 
+            <br/> 
             <li>{store.packaging}</li> 
             <br/> 
             <li>{store.rating}</li> 
             <br/> 
-            <li>Last Modified: {store.lastdatemodified}</li> 
+            <li>{store.lastdatemodified}</li> 
                    
                    <br/> 
                   </>   
@@ -38,6 +52,7 @@ export default class AllStores extends Component {
         )}
 
         </ul>
+    
     </div>
   );
 }

@@ -1,21 +1,22 @@
 import React, {Component} from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import ApiContext from '../ApiContext'
 
 
 export default class App extends Component {
 
+  static contextType = ApiContext    
 
 
   render(){
-  const categories = this.props.categories
-  console.log(this.props)
+  const categories = this.context.categories
   return (
     <div className="List">
 
       <ul>
         <br/>
       {categories.map(category =>
-        <li key={category.id} ><Link to={`category/${category.id.toString()}`}><button onClick={(id)=>this.props.handleId}>{category.name}</button></Link></li> 
+        <li key={category.id} ><Link to={`category/${category.id.toString()}`}><button>{category.name}</button></Link></li> 
      
      )}     
         
