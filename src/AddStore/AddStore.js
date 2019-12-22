@@ -9,23 +9,49 @@ export default class AddStore extends Component {
     constructor(props){
         super(props);
         this.state={
-            formValid:true
+            formValid:false,
+            storenameValid:false,
+            websiteValid:false,
+            commentsValid:false,
+            packagingValid:false,
+            categoryValid:false,
+            categoriesValid:false,
+            storeRatingValid:false,
+            errorMsg: 'Please fill out all fields'
         }
     }
     static contextType = ApiContext
 
     validateEntry=(e)=>{
-        e.preventDefault();
-       
-
-        //add testing
-
+        // e.preventDefault();
+        const value=e.target.value.trim()
+        const name=e.target.name
+        if(value===null || value==='' || value==='Sustainable Packaging?' || value==='Select Category'|| value==='Select Rating'){
+          this.setState({
+            [`${name}Valid`]: false
+          })
+          }
+        else
         this.setState({
-            formValid: true
+          [`${name}Valid`]: true
         })
 
-        
+       this.validateForm()
 
+    }
+
+    validateForm(){
+      console.log(this.state)
+      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false ||this.state.packagingValid===false || this.state.categoriesValid===false || this.state.storeRatingValid===false){
+        this.setState({
+          errorMsg: 'Please fill out all fields',
+          formValid: false
+        })
+      }
+      else this.setState({
+        errorMsg: 'Ready to submit!',
+        formValid: true
+      })
     }
 
     handleSubmit(e){
@@ -46,9 +72,12 @@ export default class AddStore extends Component {
         else if(categoryid==="Homeware"){
             categoryid =4
         }
-        else if(categoryid==="Beauty"){
+        else if(categoryid==="Beauty/Skincare"){
             categoryid =5
         }
+        else if(categoryid==="Other"){
+          categoryid =6
+      }
         else categoryid='Null'
         let date=new Date();
         let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
@@ -106,23 +135,23 @@ export default class AddStore extends Component {
           })
   return (
     <div className="Add-Store">
-        <p>Do you know of store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out!</p>
+        <p>Do you know of a store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out! <br/> {this.state.errorMsg}</p>
         <section>
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div class="form-section">
             <label for="storename">Store Name</label>
             <input type="text" name="storename"id="storename" placeholder="Store Name" value={this.storename} onChange={e => this.validateEntry(e)} required/>
             <label for="website">Website</label>
-            <textarea name="website" rows="1" id="website" value={this.website} onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="website" rows="1" id="website" value={this.website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
             <label for="comments">Sustainable Business Practices</label>
             <br/>
-            <textarea name="comments" rows="12" id="comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
                 <label for="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
-                <label htmlFor="packaging"><br/>Categories:{" "}<br/></label>
+                <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
             <select
             type='text'
             className='field'
@@ -144,7 +173,7 @@ export default class AddStore extends Component {
             id='categories'
             ref={this.context.categories }
             onChange={e => this.validateEntry(e)} required>
-                <option value={ null }>Select Categories</option>
+                <option value={ null }>Select Category</option>
                 { categoryList}
             </select>
 

@@ -5,5 +5,6 @@ stores: [],
 categories: [],
 ratings: [],
 packaging: [],
-handleAddStore: ()=>{}
+handleAddStore: ()=>{},
+handleStoreId:()=>{},
 })

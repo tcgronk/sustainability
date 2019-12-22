@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Nav from './Nav/Nav.js';
 import AddStore from './AddStore/AddStore';
+// import EditStore from './AddStore/EditStore';
 import dummystore from'./dummystore.js';
 import CategoryStoreList from './CategoryStoreList/CategoryStoreList.js';
 import CategoryList from './CategoryStoreList/CategoryList.js';
@@ -15,6 +16,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state={
+      id: {},
       stores: dummystore.stores,
       categories: dummystore.categories,
       ratings: dummystore.ratings,
@@ -25,6 +27,9 @@ export default class App extends Component {
   }
   static contextType = ApiContext    
 
+  handleEditStore=(store)=>{
+    this.setState({stores: 'hi'})
+  }
 
   handleAddStore=(store)=>{
 
@@ -43,14 +48,19 @@ export default class App extends Component {
     setTimeout(() => this.setState({saved:''}), 5000);
   }
 
+  handleStoreId=(store)=>{
+    console.log(store)
+    this.setState({id: store})
+    
+  }
 
   renderMainRoutes(){
-    const id=this.state.id
     return(
       <span>
       <Route exact path='/all-stores' component={AllStores}></Route>
       <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
+      {/* <Route exact path='/edit-store' component={()=><EditStore id={this.state.id} />}/> */}
       {['/store/:id'].map(path =>(
         <Route  
         exact
@@ -76,7 +86,8 @@ export default class App extends Component {
       categories: this.state.categories,
       ratings: this.state.ratings,
       packaging: this.state.packaging,
-      handleAddStore: this.handleAddStore
+      handleAddStore: this.handleAddStore,
+      handleStoreId: this.handleStoreId
   }}>
     <div className="App">
       <header className="App-header">

@@ -1,13 +1,20 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
+import { Link } from 'react-router-dom';
 
 
 export default class Stores extends Component {
   static contextType = ApiContext    
 
+  handleEdit(id){
+    const storeid=id
+    console.log(storeid)
+    this.context.handleStoreId(storeid)
+  }
+
     render(){
     const stores= this.context.stores
-    console.log(stores)
+    console.log(this.context.handleStoreId)
     const id=parseInt((this.props.match.params.id).slice(1),10)
     console.log(id)
     const storeArr=[]
@@ -43,6 +50,8 @@ export default class Stores extends Component {
             <li>{store.lastdatemodified}</li> 
                    
                    <br/> 
+
+            {/* <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link> */}
                   </>   
            
            

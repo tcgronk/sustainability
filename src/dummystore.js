@@ -56,18 +56,21 @@ export default {
     "name":"Homeware"
     },
     { "id":5,
-    "name":"Beauty"
+    "name":"Beauty/Skincare"
+    },
+    { "id":6,
+    "name":"Other"
     },
     ],
     "ratings":[
         {"id":1, 
-        "description": "Somewhat"},
+        "description": "Somewhat Sustainable"},
         {"id":2, 
-        "description": "Significant"},
+        "description": "Significantly Sustainable"},
         {"id":3, 
-        "description": "Excellent"},
+        "description": "Excellent Sustainability"},
         {"id":4, 
-        "description": "Waste Free"},
+        "description": "Waste-Free"},
     ],
     "packaging":[
         {"id":1, 
@@ -76,6 +79,8 @@ export default {
         "description": "Somewhat"},
         {"id":3, 
         "description": "No"},
+        {"id":4, 
+        "description": "N/A"},
     ]
 
 }
