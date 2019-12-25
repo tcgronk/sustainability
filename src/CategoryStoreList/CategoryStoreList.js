@@ -10,6 +10,7 @@ export default class CategoryStoreList extends Component {
     super(props);
     this.state={
       value: '',
+
     }
   }
   static contextType = ApiContext    
@@ -18,10 +19,9 @@ export default class CategoryStoreList extends Component {
     const packing=e.target.value
     this.setState({value: packing})
   }
- 
+  
 
   render(){
-    let Arr=[]
     const categoryId= parseInt(this.props.match.params.id)
     const category=this.context.categories[categoryId-1].name
     const packagings = this.context.packaging
@@ -34,7 +34,7 @@ export default class CategoryStoreList extends Component {
           </option>
         )
       })
-    console.log(categoryId)
+    
         return (
             <div className="CategoryStoreList">
               <p>{category}</p>
@@ -51,7 +51,7 @@ export default class CategoryStoreList extends Component {
                     { packingList }
                 </select>
             </div>
-            <StoreCard value={this.state.value} id={categoryId}/>
+            <StoreCard  value={this.state.value} id={categoryId}/>
 
            
           </div>

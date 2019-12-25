@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 export default class StoreCard extends Component {
-  static contextType = ApiContext    
 
+  
+  static contextType = ApiContext    
+    
   
     render(){
     const stores= this.context.stores
@@ -13,7 +15,7 @@ export default class StoreCard extends Component {
     const id=parseInt(this.props.id,10)
     console.log(this.props)
     const storeArr=[]
-      if(this.props.value !="" || this.props.value !="Select Packaging Type:"){
+    if(this.props.value === 'Yes' || this.props.value === "Somewhat" || this.props.value === "No" || this.props.value === "N/A"){
       for(let i=0; i<stores.length; i++){
         if(stores[i].packaging===this.props.value && stores[i].category===id){
           storeArr.push(stores[i])
@@ -21,27 +23,27 @@ export default class StoreCard extends Component {
         }
         
     }
-    }
+  }
 
     else for(let i=0; i<stores.length; i++){
       console.log(stores[i].category)
       if(stores[i].category===id){
         storeArr.push(stores[i])
-      }console.log(storeArr)
+      }
     }
+    
     return (
     <div className="StoreCard">
      
-    
-     
+
+
 <ul>
-        
         {storeArr.map(store =>
              <>
              <br/>   
-                    
-            <Link to={`/store/:${store.id}`} ><li>{store.storename}</li></Link>
                    
+            <Link to={`/store/:${store.id}`} ><li>{store.storename}</li></Link>
+            
             <br/> 
             <li>{store.website}</li> 
             <br/> 

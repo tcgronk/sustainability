@@ -94,7 +94,7 @@ export default class App extends Component {
         <Nav />
         <Link to='/all-stores'><button>All stores</button></Link>
       <Link to='/'><button>Back to All Categories</button></Link>
-      <p>Find sustainable stores & <Link to='/addstore'>add new stores </Link>to the list!</p>
+      <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
       </header>
 
       <main>
