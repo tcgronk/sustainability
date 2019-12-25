@@ -51,7 +51,7 @@ export default class Stores extends Component {
                    
                    <br/> 
 
-            {/* <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link> */}
+            <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link>
                   </>   
            
            

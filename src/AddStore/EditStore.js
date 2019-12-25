@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
-import './AddStore.css'
+import { Link } from 'react-router-dom';
 
 
 
-export default class AddStore extends Component {
+
+export default class EditStore extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -15,16 +16,17 @@ export default class AddStore extends Component {
             packagingValid:false,
             categoryValid:false,
             categoriesValid:false,
+            storeRatingValid:false,
             errorMsg: 'Please fill out all fields'
         }
     }
     static contextType = ApiContext
 
     validateEntry=(e)=>{
-        e.preventDefault();
+        // e.preventDefault();
         const value=e.target.value.trim()
         const name=e.target.name
-        if(value===null || value===''|| value==='Sustainable Packaging?' || value==='Select Category'){
+        if(value===null || value==='' || value==='Sustainable Packaging?' || value==='Select Category'|| value==='Select Rating'){
           this.setState({
             [`${name}Valid`]: false
           })
@@ -40,7 +42,7 @@ export default class AddStore extends Component {
 
     validateForm(){
       console.log(this.state)
-      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false || this.state.categoriesValid===false ){
+      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false ||this.state.packagingValid===false || this.state.categoriesValid===false || this.state.storeRatingValid===false){
         this.setState({
           errorMsg: 'Please fill out all fields',
           formValid: false
@@ -96,11 +98,15 @@ export default class AddStore extends Component {
         this.props.history.push(`/`)
     }
 
-    handleCancelAdd = () => {
-        this.props.history.push(`/`)
-      }
+    // handleCancelEdit = () => {
+    //     console.log(this.props)
+    //     this.props.history.push(`/store/${this.props.id}`)
+    //   }
 
   render(){
+    const stores=this.context.stores
+    const id=this.props.id
+    const store=stores[(id-1)]
     const ratings = this.context.ratings
     const options = ratings.map((rating) => {
         return(
@@ -131,20 +137,22 @@ export default class AddStore extends Component {
               </option>
             )
           })
+
+ 
   return (
-    <div className="Add-Store">
-        <p className='top'>Do you know of a store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out! <br/> {this.state.errorMsg}</p>
+    <div className="Edit-Store">
+        <p>Do you know of a store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out! <br/> {this.state.errorMsg}</p>
         <section>
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div class="form-section">
             <label for="storename">Store Name</label>
-            <input type="text" name="storename"id="storename" placeholder="Store Name" value={this.storename} onChange={e => this.validateEntry(e)} required/>
+            <input type="text" name="storename"id="storename"  value={this.context.stores[id-1].storename} defaultValue={this.context.stores[id-1].storename} onChange={this.handleAddStore} required/>
             <label for="website">Website</label>
-            <textarea name="website" rows="1" id="website" value={this.website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="website" rows="1" id="website" value={this.context.stores[id-1].website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
             <label for="comments">Sustainable Business Practices</label>
             <br/>
-            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.context.stores[id-1].comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
@@ -157,7 +165,7 @@ export default class AddStore extends Component {
             id='packaging'
             ref={this.context.packaging }
             onChange={e => this.validateEntry(e)} required>
-                <option value={ null }>Sustainable Packaging?</option>
+                <option value={null} >Sustainable Packaging?</option>
                 { packingList}
             </select>
             </div>
@@ -188,13 +196,13 @@ export default class AddStore extends Component {
             name='storeRating'
             id='storeRating'
             ref={this.context.options }
-            required>
+            onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Rating</option>
                 { options }
             </select>
             </div>
           <button type="submit"  disabled={!this.state.formValid}>Submit</button>
-          <button type="reset"onClick={e => this.handleCancelAdd()}>Cancel</button>
+          <Link to={`/store/:${id}`}><button type="reset">Cancel</button></Link>
         </form>
       </section>
     </div>

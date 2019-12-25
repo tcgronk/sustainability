@@ -6,19 +6,36 @@ import { Link } from 'react-router-dom';
 export default class StoreCard extends Component {
   static contextType = ApiContext    
 
+  
     render(){
     const stores= this.context.stores
     // const id=parseInt((this.props.match.params.id).slice(1),10)
     const id=parseInt(this.props.id,10)
-    console.log(id)
+    console.log(this.props)
     const storeArr=[]
-    for(let i=0; i<stores.length; i++){
+
+    if(this.props.value === 'Yes' || this.props.value === "Somewhat" || this.props.value === "No" || this.props.value === "N/A"){
+      for(let i=0; i<stores.length; i++){
+        if(stores[i].packaging===this.props.value && stores[i].category===id){
+          storeArr.push(stores[i])
+          
+        }
+        
+    }console.log("hi")
+    }
+  //   else if(this.props.value === 'Select Packaging Type:'){
+  //     for(let i=0; i<stores.length; i++){
+  //     if(stores[i].category===id){
+  //       storeArr.push(stores[i])
+  //     }
+  //   }console.log(storeArr)
+  //  }
+    else for(let i=0; i<stores.length; i++){
       console.log(stores[i].category)
       if(stores[i].category===id){
         storeArr.push(stores[i])
-      }
+      }console.log(storeArr)
     }
-  
     return (
     <div className="StoreCard">
      

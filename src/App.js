@@ -92,16 +92,15 @@ export default class App extends Component {
     <div className="App">
       <header className="App-header">
         <Nav />
-
+        <Link to='/all-stores'><button>All stores</button></Link>
+      <Link to='/'><button>Back to All Categories</button></Link>
+      <p>Find sustainable stores & <Link to='/addstore'>add new stores </Link>to the list!</p>
       </header>
 
       <main>
         <br/>
       <h3>{this.state.saved}</h3>
-      <Link to='/all-stores'><button>All stores</button></Link>
-      <Link to='/'><button>Back to All Categories</button></Link>
       <span>{this.renderMainRoutes()}</span>
-      <p>Find sustainable stores & <Link to='/addstore'>add new stores </Link>to the list!</p>
       </main>
     </div>
     </ApiContext.Provider>

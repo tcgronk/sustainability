@@ -6,28 +6,52 @@ import StoreCard from '../Stores/StoreCard'
 
 
 export default class CategoryStoreList extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      value: '',
+    }
+  }
   static contextType = ApiContext    
 
+  filterEntry=(e)=>{
+    const packing=e.target.value
+    this.setState({value: packing})
+  }
+ 
 
   render(){
-
-    
+    let Arr=[]
     const categoryId= parseInt(this.props.match.params.id)
-    // const stores=this.context.stores
-    // const category=this.context.categories
-    // const storeArr=[]
-    // console.log(categoryId)
-    // for(let i=0; i<stores.length; i++){
-    //   console.log(stores[i].category)
-    //   if(stores[i].category===categoryId){
-    //     storeArr.push(stores[i])
-    //   }
-    // }
+    const category=this.context.categories[categoryId-1].name
+    const packagings = this.context.packaging
+    const packingList = packagings.map((packaging) => {
+        return(
+          <option
+            key= {packaging.packagingid}
+            value = {packaging.packagingid}>
+            {packaging.description}
+          </option>
+        )
+      })
     console.log(categoryId)
         return (
             <div className="CategoryStoreList">
-
-            <StoreCard id={categoryId}/>
+              <p>{category}</p>
+              <div class="filter-section">
+                <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
+                <select
+                type='text'
+                className='field'
+                name='packaging'
+                id='packaging'
+                ref={packagings }
+                onChange={ e=>this.filterEntry(e) } required>
+                    <option value={ null }>Select Packaging Type:</option>
+                    { packingList }
+                </select>
+            </div>
+            <StoreCard value={this.state.value} id={categoryId}/>
 
            
           </div>

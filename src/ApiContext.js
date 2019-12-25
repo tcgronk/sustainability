@@ -7,4 +7,5 @@ ratings: [],
 packaging: [],
 handleAddStore: ()=>{},
 handleStoreId:()=>{},
+
 })
