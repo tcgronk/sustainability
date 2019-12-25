@@ -13,15 +13,14 @@ export default class StoreCard extends Component {
     const id=parseInt(this.props.id,10)
     console.log(this.props)
     const storeArr=[]
-
-    if(this.props.value === 'Yes' || this.props.value === "Somewhat" || this.props.value === "No" || this.props.value === "N/A"){
+      if(this.props.value !="" || this.props.value !="Select Packaging Type:"){
       for(let i=0; i<stores.length; i++){
         if(stores[i].packaging===this.props.value && stores[i].category===id){
           storeArr.push(stores[i])
           
         }
         
-    }console.log("hi")
+    }
     }
   //   else if(this.props.value === 'Select Packaging Type:'){
   //     for(let i=0; i<stores.length; i++){
