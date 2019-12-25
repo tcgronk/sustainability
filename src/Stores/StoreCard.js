@@ -22,13 +22,7 @@ export default class StoreCard extends Component {
         
     }
     }
-  //   else if(this.props.value === 'Select Packaging Type:'){
-  //     for(let i=0; i<stores.length; i++){
-  //     if(stores[i].category===id){
-  //       storeArr.push(stores[i])
-  //     }
-  //   }console.log(storeArr)
-  //  }
+
     else for(let i=0; i<stores.length; i++){
       console.log(stores[i].category)
       if(stores[i].category===id){
@@ -38,9 +32,10 @@ export default class StoreCard extends Component {
     return (
     <div className="StoreCard">
      
-
-
+    
+     
 <ul>
+        
         {storeArr.map(store =>
              <>
              <br/>   

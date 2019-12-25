@@ -24,7 +24,7 @@ export default class AddStore extends Component {
         e.preventDefault();
         const value=e.target.value.trim()
         const name=e.target.name
-        if(value===null || value===''|| value==='Sustainable Packaging?' || value==='Select Category'){
+        if(value===null || value===''){
           this.setState({
             [`${name}Valid`]: false
           })
@@ -40,7 +40,7 @@ export default class AddStore extends Component {
 
     validateForm(){
       console.log(this.state)
-      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false || this.state.categoriesValid===false ){
+      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false  ){
         this.setState({
           errorMsg: 'Please fill out all fields',
           formValid: false
