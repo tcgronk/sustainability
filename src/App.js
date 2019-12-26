@@ -49,7 +49,6 @@ export default class App extends Component {
   }
 
   handleStoreId=(store)=>{
-    console.log(store)
     this.setState({id: store})
     
   }
@@ -70,8 +69,6 @@ export default class App extends Component {
       {['/category/:id'].map(path =>(
         <Route  
         exact
-        key={path}
-        exact
         path={path} component={CategoryStoreList}/> 
         ))}
       
@@ -79,7 +76,6 @@ export default class App extends Component {
     )
   }
   render(){
-
   return (
     <ApiContext.Provider value={{
       stores: this.state.stores,

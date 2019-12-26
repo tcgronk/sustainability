@@ -41,7 +41,6 @@ export default class EditStore extends Component {
     }
 
     validateForm(){
-      console.log(this.state)
       if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false ||this.state.packagingValid===false || this.state.categoriesValid===false || this.state.storeRatingValid===false){
         this.setState({
           errorMsg: 'Please fill out all fields',
@@ -81,7 +80,6 @@ export default class EditStore extends Component {
         else categoryid='Null'
         let date=new Date();
         let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
-        console.log(stores.length)
         const store = {
             id: parseInt(stores.length+1,10),
             storename: e.target['storename'].value,

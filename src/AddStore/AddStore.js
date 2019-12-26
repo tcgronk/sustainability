@@ -24,7 +24,7 @@ export default class AddStore extends Component {
         e.preventDefault();
         const value=e.target.value.trim()
         const name=e.target.name
-        if(value===null || value===''){
+        if(value.length<1){
           this.setState({
             [`${name}Valid`]: false
           })
@@ -39,7 +39,6 @@ export default class AddStore extends Component {
     }
 
     validateForm(){
-      console.log(this.state)
       if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false  ){
         this.setState({
           errorMsg: 'Please fill out all fields',
@@ -79,7 +78,6 @@ export default class AddStore extends Component {
         else categoryid='Null'
         let date=new Date();
         let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
-        console.log(stores.length)
         const store = {
             id: parseInt(stores.length+1,10),
             storename: e.target['storename'].value,
@@ -136,19 +134,19 @@ export default class AddStore extends Component {
         <p className='top'>Do you know of a store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out! <br/> {this.state.errorMsg}</p>
         <section>
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
-            <div class="form-section">
-            <label for="storename">Store Name</label>
+            <div className="form-section">
+            <label htmlFor="storename">Store Name</label>
             <input type="text" name="storename"id="storename" placeholder="Store Name" value={this.storename} onChange={e => this.validateEntry(e)} required/>
-            <label for="website">Website</label>
+            <label htmlFor="website">Website</label>
             <textarea name="website" rows="1" id="website" value={this.website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
-            <label for="comments">Sustainable Business Practices</label>
+            <label htmlFor="comments">Sustainable Business Practices</label>
             <br/>
             <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
-                <label for="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
+                <label htmlFor="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
                 <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
             <select
             type='text'
@@ -162,7 +160,7 @@ export default class AddStore extends Component {
             </select>
             </div>
             <br/>
-            <div class="form-section">
+            <div className="form-section">
             <label htmlFor="categories"><br/>Categories:{" "}<br/></label>
             <select
             type='text'
@@ -177,7 +175,7 @@ export default class AddStore extends Component {
 
             </div>
             <br/>
-            <div class="form-section">
+            <div className="form-section">
             <p>Select Rating </p>
             <p> Based on your experience, rate the level of sustainable business practices from 1 somewhat sustainable, 2 significant sustainability efforts, 3 excellent sustainability, 4 totally waste free.</p>
 

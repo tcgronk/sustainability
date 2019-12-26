@@ -8,18 +8,14 @@ export default class Stores extends Component {
 
   handleEdit(id){
     const storeid=id
-    console.log(storeid)
     this.context.handleStoreId(storeid)
   }
 
     render(){
     const stores= this.context.stores
-    console.log(this.context.handleStoreId)
     const id=parseInt((this.props.match.params.id).slice(1),10)
-    console.log(id)
     const storeArr=[]
     for(let i=0; i<stores.length; i++){
-      console.log(stores[i].category)
       if(stores[i].id===id){
         storeArr.push(stores[i])
       }
