@@ -21,7 +21,8 @@ export default class App extends Component {
       categories: dummystore.categories,
       ratings: dummystore.ratings,
       packaging: dummystore.packaging,
-      saved: ''
+      saved: '', 
+      
 
     }
   }
@@ -52,10 +53,18 @@ export default class App extends Component {
     this.setState({id: store})
     
   }
+  renderBackButton(){
+    if(this.state.back===false){
+    this.setState({back: true})
+    }
+    else this.setState({back: false})
+  }
+
 
   renderMainRoutes(){
     return(
       <span>
+      
       <Route exact path='/all-stores' component={AllStores}></Route>
       <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
@@ -76,6 +85,9 @@ export default class App extends Component {
     )
   }
   render(){
+    // const backButton = this.state.back
+    // ? <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
+    // : "";
   return (
     <ApiContext.Provider value={{
       stores: this.state.stores,
@@ -89,7 +101,7 @@ export default class App extends Component {
       <header className="App-header">
         <Nav />
         <Link to='/all-stores'><button>All stores</button></Link>
-      <Link to='/'><button>Back to All Categories</button></Link>
+      
       <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
       </header>
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import StoreCard from '../Stores/StoreCard'
+import { Link } from 'react-router-dom';
 
 
 
@@ -50,6 +51,7 @@ export default class CategoryStoreList extends Component {
         })
         return (
             <div className="CategoryStoreList">
+              <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
               <p>{category}</p>
               <div className="filter-section">
                 <label htmlFor="packaging"><br/>Sustainable Packaging? {" "}<br/></label>
