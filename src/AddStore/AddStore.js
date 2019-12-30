@@ -68,7 +68,7 @@ export default class AddStore extends Component {
     
       }
       console.log(store)
-      const url =`${config.API_BASE_URL}/api/stores`
+      const url =`${config.API_ENDPOINT}/api/stores`
       const options = {
         method: 'POST',
         body: JSON.stringify(store),

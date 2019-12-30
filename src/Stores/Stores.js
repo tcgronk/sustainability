@@ -15,7 +15,7 @@ export default class Stores extends Component {
     e.preventDefault()
     const storeid = parseInt((this.props.match.params.id).slice(1),10)
     console.log(storeid)
-    fetch(`${config.API_BASE_URL}/api/stores/${storeid}`, {
+    fetch(`${config.API_ENDPOINT}/api/stores/${storeid}`, {
       method: 'DELETE',
       
       headers: {

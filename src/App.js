@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   handleAddStore=(store)=>{
-     fetch(`${config.API_BASE_URL}/api/stores`, {
+     fetch(`${config.API_ENDPOINT}/api/stores`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
@@ -80,10 +80,10 @@ export default class App extends Component {
   }
   componentDidMount() {
     Promise.all([
-        fetch(`${config.API_BASE_URL}/api/stores`),
-        fetch(`${config.API_BASE_URL}/api/categories`),
-        fetch(`${config.API_BASE_URL}/api/packagings`),
-        fetch(`${config.API_BASE_URL}/api/ratings`)
+        fetch(`${config.API_ENDPOINT}/api/stores`),
+        fetch(`${config.API_ENDPOINT}/api/categories`),
+        fetch(`${config.API_ENDPOINT}/api/packagings`),
+        fetch(`${config.API_ENDPOINT}/api/ratings`)
     ])
         .then(([storesRes, categoriesRes, packagingsRes, ratingsRes]) => {
             if (!storesRes.ok)
