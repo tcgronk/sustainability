@@ -10,6 +10,7 @@ import CategoryList from './CategoryStoreList/CategoryList.js';
 import ApiContext from './ApiContext'
 import AllStores from './AllStores/AllStores'
 import Stores from './Stores/Stores'
+import config from './config'
 
 
 export default class App extends Component {
@@ -17,10 +18,10 @@ export default class App extends Component {
     super(props);
     this.state={
       id: {},
-      stores: dummystore.stores,
-      categories: dummystore.categories,
-      ratings: dummystore.ratings,
-      packaging: dummystore.packaging,
+      stores: [],
+      categories: [],
+      ratings: [],
+      packagings: [],
       saved: '', 
       
 
@@ -33,20 +34,38 @@ export default class App extends Component {
   }
 
   handleAddStore=(store)=>{
-
-    
-    this.setState({
-      stores: [ ...this.state.stores,
-      store],
-      saved: `${store.storename} saved to the ${store.categoryname} section!`
-
-      
+     fetch(`${config.API_BASE_URL}/api/stores`, {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      }
     })
-    
-    
+    .then(res => {
+      if (!res.ok)
+        return res.json().then(e => Promise.reject(e));
+      
+        return res.json()
+    })
+    .then(stores => {
+      let category='All'
+      for(let i=0; i<this.state.categories.length; i++){
+        if(store.categoriesid===this.state.categories[i].categoriesid){
+          category=this.state.categories[i].categoriesdescription
+        }
+      }
+      this.setState({stores: stores,
+      saved: `${store.storename} is saved to ${category}`});
+
+    })
+    .catch(error => {
+      console.error({ error });
+    })
   }
+    
+    
+  
   componentDidUpdate(){
-    setTimeout(() => this.setState({saved:''}), 5000);
+    setTimeout(() => this.setState({saved:''}), 7000);
   }
 
   handleStoreId=(store)=>{
@@ -58,6 +77,42 @@ export default class App extends Component {
     this.setState({back: true})
     }
     else this.setState({back: false})
+  }
+  componentDidMount() {
+    Promise.all([
+        fetch(`${config.API_BASE_URL}/api/stores`),
+        fetch(`${config.API_BASE_URL}/api/categories`),
+        fetch(`${config.API_BASE_URL}/api/packagings`),
+        fetch(`${config.API_BASE_URL}/api/ratings`)
+    ])
+        .then(([storesRes, categoriesRes, packagingsRes, ratingsRes]) => {
+            if (!storesRes.ok)
+                return storesRes.json().then(e => Promise.reject(e));
+            if (!categoriesRes.ok)
+                return categoriesRes.json().then(e => Promise.reject(e));
+            if (!packagingsRes.ok)
+                return packagingsRes.json().then(e => Promise.reject(e));
+            if (!ratingsRes.ok)
+                return ratingsRes.json().then(e => Promise.reject(e));
+
+            return Promise.all([storesRes.json(), categoriesRes.json(), packagingsRes.json(),ratingsRes.json()]);
+        })
+        .then(([stores, categories, packagings, ratings]) => {
+            this.setState({stores, categories, packagings, ratings});
+
+        })
+        .catch(error => {
+            console.error({error});
+        });
+       
+}
+
+  handleDeleteStore=(storeid)=>{
+    this.setState({
+      stores: this.state.stores.filter(store => store.storeid !== storeid )
+    })
+  
+  
   }
 
 
@@ -93,9 +148,10 @@ export default class App extends Component {
       stores: this.state.stores,
       categories: this.state.categories,
       ratings: this.state.ratings,
-      packaging: this.state.packaging,
+      packagings: this.state.packagings,
       handleAddStore: this.handleAddStore,
-      handleStoreId: this.handleStoreId
+      handleStoreId: this.handleStoreId,
+      handleDeleteStore: this.handleDeleteStore
   }}>
     <div className="App">
       <header className="App-header">

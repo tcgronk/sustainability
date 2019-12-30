@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import './AddStore.css'
+import config from '../config'
 
 
 
@@ -8,6 +9,7 @@ export default class AddStore extends Component {
     constructor(props){
         super(props);
         this.state={
+            
             formValid:false,
             storenameValid:false,
             websiteValid:false,
@@ -31,7 +33,8 @@ export default class AddStore extends Component {
           }
         else
         this.setState({
-          [`${name}Valid`]: true
+          [`${name}Valid`]: true, 
+          
         })
 
        this.validateForm()
@@ -50,49 +53,55 @@ export default class AddStore extends Component {
         formValid: true
       })
     }
-
-    handleSubmit(e){
-        e.preventDefault();
-
-        let stores=this.context.stores
-
-        let categoryid=e.target['categories'].value
-        if(categoryid==="Food & Coffee"){
-            categoryid =1
-        }
-        else if(categoryid==="Clothing"){
-            categoryid =2
-        }
-        else if(categoryid==="Luxury Goods"){
-            categoryid =3
-        }
-        else if(categoryid==="Homeware"){
-            categoryid =4
-        }
-        else if(categoryid==="Beauty/Skincare"){
-            categoryid =5
-        }
-        else if(categoryid==="Other"){
-          categoryid =6
+  handleSubmit(e) {
+      e.preventDefault();
+      let stores=this.context.stores
+      let date=new Date();
+      let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
+      const store = {
+       storename: e.target['storename'].value,
+       website: e.target['website'].value,
+       comments: e.target['comments'].value,
+       packagingsid: parseInt(e.target['packaging'].value,10),
+       categoriesid: parseInt(e.target['categories'].value,10),
+       ratingsid: 3
+    
       }
-        else categoryid='Null'
-        let date=new Date();
-        let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
-        const store = {
-            id: parseInt(stores.length+1,10),
-            storename: e.target['storename'].value,
-            website: e.target['website'].value,
-            lastdatemodified: today,
-            comments: e.target['comments'].value,
-            packaging: e.target['packaging'].value,
-            categoryname: e.target['categories'].value,
-            category: categoryid,
-            rating: e.target['storeRating'].value
-
+      console.log(store)
+      const url =`${config.API_BASE_URL}/api/stores`
+      const options = {
+        method: 'POST',
+        body: JSON.stringify(store),
+        headers: {
+          "Content-Type": "application/json",
         }
-        this.context.handleAddStore(store)
-        this.props.history.push(`/`)
+      };
+      
+      if(this.state.formValid===true){
+      fetch(url, options)
+        .then(res => {
+          if(!res.ok) {
+            return res.json().then(e => Promise.reject(e))
+          }
+          return res.json()
+        })
+        .then(() => {
+            this.context.handleAddStore(store)
+            this.props.history.push(`/`)
+            this.setState({
+              errorMsg: 'Saved!'
+            });
+          })
+        .catch(err => {
+          this.setState({
+            errorMsg: 'Unable to save store, please try again'
+          });
+        });
     }
+    else (this.setState({
+      errorMsg: `${" "}Please ensure you have entered all fields.`
+    }))
+  }
 
     handleCancelAdd = () => {
         this.props.history.push(`/`)
@@ -113,19 +122,19 @@ export default class AddStore extends Component {
       const categoryList = categories.map((category) => {
           return(
             <option
-              key= {category.categoryid}
-              value = {category.categoryid}>
-              {category.name}
+              key= {category.categoriesid}
+              value = {category.categoriesid}>
+              {category.categoriesdescription}
             </option>
           )
         })
-        const packagings = this.context.packaging
+        const packagings = this.context.packagings
         const packingList = packagings.map((packaging) => {
             return(
               <option
-                key= {packaging.packagingid}
-                value = {packaging.packagingid}>
-                {packaging.description}
+                key= {packagings.packagingsid}
+                value = {packaging.packagingsid}>
+                {packaging.packagingsdescription}
               </option>
             )
           })
@@ -153,7 +162,7 @@ export default class AddStore extends Component {
             className='field'
             name='packaging'
             id='packaging'
-            ref={this.context.packaging }
+            ref={this.context.packagings }
             onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Sustainable Packaging?</option>
                 { packingList}

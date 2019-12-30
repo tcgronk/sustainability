@@ -16,11 +16,13 @@ export default class StoreCard extends Component {
     let result=[]
     const id=parseInt(this.props.id,10)
     // storeArr=(stores.filter(store => store.category ===id))
-    console.log(id)
+    
+
     storeArr=[]
-    if(this.props.value === 'Yes' || this.props.value === "Somewhat" || this.props.value === "No" || this.props.value === "N/A" ){
+    if(this.props.value === 1 || this.props.value === 2 || this.props.value === 3 || this.props.value === 4 ){
       for(let i=0; i<stores.length; i++){
-        if(stores[i].packaging===this.props.value && stores[i].category===id ){
+        
+        if(stores[i].packagingsid===this.props.value && stores[i].categoriesid===id ){
           storeArr.push(stores[i])
           
         }
@@ -31,19 +33,20 @@ export default class StoreCard extends Component {
 
     else for(let i=0; i<stores.length; i++){
 
-      if(stores[i].category===id){
+      if(stores[i].categoriesid===id){
         storeArr.push(stores[i])
         
       }
       result=storeArr
     }
-    if(this.props.rating ==="Excellent Sustainability" || this.props.rating ==="Somewhat Sustainable" || this.props.rating ==="Significantly Sustainable"|| this.props.rating ==="Waste-Free"){
-    result = result.filter(store => store.rating ===this.props.rating);
-    
+    if(this.props.rating ===1 || this.props.rating ===2 || this.props.rating ===3 || this.props.rating ===4){
+    result = result.filter(store => store.ratingsid ===this.props.rating)
   }
+  const ratings=this.context.ratings
+  const packagings=this.context.packagings
 
-  
-    return (
+
+  return (
     <div className="StoreCard">
      
 
@@ -53,14 +56,23 @@ export default class StoreCard extends Component {
              <>
              <br/>   
                 
-            <Link to={`/store/:${store.id}`} ><li>{store.storename}</li></Link>
+            <Link to={`/store/:${store.storeid}`} ><li>{store.storename}</li></Link>
             
             <br/> 
             <li>{store.website}</li> 
             <br/> 
-            <li>{store.packaging}</li> 
             <br/> 
-            <li>Rating:{store.rating}</li> 
+            {packagings.map(packaging =>
+            packaging.packagingsid===store.packagingsid
+            ? <li>Sustainable Packaging?: {packaging.packagingsdescription}</li>
+            : null)}
+            <br/> 
+            {ratings.map(rating =>
+              rating.ratingsid===store.ratingsid
+              ?<li>Rating: {rating.ratingsdescription}</li>
+            : null)}
+             <br/> 
+            
             <br/> 
             <li>Last Modified: {store.lastdatemodified}</li> 
                    
@@ -70,10 +82,11 @@ export default class StoreCard extends Component {
            
         
         
-        
+
         )}
 
         </ul>
+        
     
     </div>
   );

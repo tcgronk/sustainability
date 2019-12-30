@@ -17,7 +17,7 @@ export default class App extends Component {
       <ul>
         <br/>
       {categories.map(category =>
-        <li key={category.id} ><Link to={`category/${category.id.toString()}`}><button>{category.name}</button></Link></li> 
+        <li key={category.categoriesid} ><Link to={`category/${category.categoriesid.toString()}`}><button>{category.categoriesdescription}</button></Link></li> 
      
      )}     
         

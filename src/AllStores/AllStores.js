@@ -11,6 +11,8 @@ export default class AllStores extends Component {
 
 render(){
       const stores = this.context.stores
+      const ratings=this.context.ratings
+      const packagings=this.context.packagings
       return (
         <div className="AllStores">
      
@@ -21,15 +23,21 @@ render(){
                      <>
                      <br/>   
                         
-                    <Link to={`/store/:${store.id}`} ><li>{store.storename}</li></Link>
+                    <Link to={`/store/:${store.storeid}`} ><li>{store.storename}</li></Link>
                     <br/> 
-                    <li>{store.category}</li> 
+                    <li>{store.categories}</li> 
                     <br/> 
                     <li>{store.website}</li> 
                     <br/> 
-                    <li>{store.packaging}</li> 
+                    {packagings.map(packaging =>
+                    packaging.packagingsid===store.packagingsid
+                    ? <li>Sustainable Packaging?: {packaging.packagingsdescription}</li>
+                    : null)}
                     <br/> 
-                    <li>Rating:{store.rating}</li> 
+                    {ratings.map(rating =>
+                      rating.ratingsid===store.ratingsid
+                      ?<li>Rating: {rating.ratingsdescription}</li>
+                    : null)}
                     <br/> 
                     <li>Last Modified: {store.lastdatemodified}</li> 
                            

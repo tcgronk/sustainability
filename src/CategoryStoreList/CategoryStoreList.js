@@ -9,33 +9,37 @@ export default class CategoryStoreList extends Component {
   constructor(props){
     super(props);
     this.state={
-      value: '',
-      rating:''
+      value: 0,
+      rating:0
 
     }
   }
   static contextType = ApiContext    
 
   filterEntryPackaging=(e)=>{
-    const packing=e.target.value
+    const packing=parseInt(e.target.value,10)
     this.setState({value: packing})
   }
   filterEntryRating=(e)=>{
-    const rating=e.target.value
+    const rating=parseInt(e.target.value,10)
     this.setState({rating: rating})
   }
   
 
   render(){
     const categoryId= parseInt(this.props.match.params.id)
-    const category=this.context.categories[categoryId-1].name
-    const packagings = this.context.packaging
+    let category=''
+    if(this.context.categories.length>0){
+    category=this.context.categories[categoryId-1].categoriesdescription
+    }
+    else category="Food & Coffee"
+    const packagings = this.context.packagings
     const packingList = packagings.map((packaging) => {
         return(
           <option
-            key= {packaging.packagingid}
-            value = {packaging.packagingid}>
-            {packaging.description}
+            key= {packaging.packagingsid}
+            value = {packaging.packagingsid}>
+            {packaging.packagingsdescription}
           </option>
         )
       })
@@ -43,12 +47,13 @@ export default class CategoryStoreList extends Component {
       const options = ratings.map((rating) => {
           return(
             <option
-              key= {rating.ratingid}
-              value = {rating.ratingid}>
-              {rating.description}
+              key= {rating.ratingsid}
+              value = {rating.ratingsid}>
+              {rating.ratingsdescription}
             </option>
           )
         })
+       
         return (
             <div className="CategoryStoreList">
               <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
@@ -71,7 +76,7 @@ export default class CategoryStoreList extends Component {
             className='field'
             name='storeRating'
             id='storeRating'
-            ref={this.context.options }
+            ref={this.options }
             onChange={ e=>this.filterEntryRating(e) } required>
             <option value={ null }>All</option>
                 { options }

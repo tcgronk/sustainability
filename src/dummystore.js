@@ -72,7 +72,7 @@ export default {
         {"id":4, 
         "description": "Waste-Free"},
     ],
-    "packaging":[
+    "packagings":[
         {"id":1, 
         "description": "Yes"},
         {"id":2, 

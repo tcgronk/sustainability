@@ -4,8 +4,9 @@ export default React.createContext({
 stores: [],
 categories: [],
 ratings: [],
-packaging: [],
+packagings: [],
 handleAddStore: ()=>{},
+handleDeleteStore: ()=>{},
 handleStoreId:()=>{},
 handleCount: ()=>{}
 })
