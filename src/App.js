@@ -65,7 +65,7 @@ export default class App extends Component {
     
   
   componentDidUpdate(){
-    setTimeout(() => this.setState({saved:''}), 7000);
+    setTimeout(() => this.setState({saved:''}), 9000);
   }
 
   handleStoreId=(store)=>{

@@ -74,7 +74,7 @@ export default class StoreCard extends Component {
              <br/> 
             
             <br/> 
-            <li>Last Modified: {store.lastdatemodified}</li> 
+            <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
                   </>   

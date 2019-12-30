@@ -112,9 +112,9 @@ export default class AddStore extends Component {
     const options = ratings.map((rating) => {
         return(
           <option
-            key= {rating.ratingid}
-            value = {rating.ratingid}>
-            {rating.description}
+            key= {rating.ratingsid}
+            value = {rating.ratingsid}>
+            {rating.ratingsdescription}
           </option>
         )
       })
@@ -194,7 +194,7 @@ export default class AddStore extends Component {
             className='field'
             name='storeRating'
             id='storeRating'
-            ref={this.context.options }
+            ref={this.options }
             required>
                 <option value={ null }>Select Rating</option>
                 { options }

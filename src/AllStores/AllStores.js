@@ -16,7 +16,7 @@ render(){
       return (
         <div className="AllStores">
      
-
+        <h2>{stores.length} Stores have been added to Shop Sustainably so far!</h2>
 
         <ul>
                 {stores.map(store =>
@@ -39,7 +39,7 @@ render(){
                       ?<li>Rating: {rating.ratingsdescription}</li>
                     : null)}
                     <br/> 
-                    <li>Last Modified: {store.lastdatemodified}</li> 
+                    <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
                            
                            <br/> 
                           </>   
