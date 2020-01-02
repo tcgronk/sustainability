@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTshirt, faGem, faHome, faBone, faStar, faBath, faCoffee} from '@fortawesome/free-solid-svg-icons';
 
+library.add(faTshirt,faGem, faHome, faBone, faStar, faBath, faCoffee);
 
 export default class App extends Component {
 
@@ -17,8 +21,10 @@ export default class App extends Component {
       <ul>
         <br/>
       {categories.map(category =>
-        <li key={category.categoriesid} ><Link to={`category/${category.categoriesid.toString()}`}><button>{category.categoriesdescription}</button></Link></li> 
-     
+
+        
+       <li key={category.categoriesid} ><Link to={`category/${category.categoriesid.toString()}`}><button><FontAwesomeIcon icon={(category.icons).slice(7,13)}/> {category.categoriesdescription}</button></Link></li> 
+ 
      )}     
         
        <br/>

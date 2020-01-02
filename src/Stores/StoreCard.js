@@ -14,10 +14,9 @@ export default class StoreCard extends Component {
     
     const stores= this.context.stores
     let result=[]
-    const id=parseInt(this.props.id,10)
+    const id=this.props.id
     // storeArr=(stores.filter(store => store.category ===id))
-    
-
+      
     storeArr=[]
     if(this.props.value === 1 || this.props.value === 2 || this.props.value === 3 || this.props.value === 4 ){
       for(let i=0; i<stores.length; i++){
@@ -44,37 +43,37 @@ export default class StoreCard extends Component {
   }
   const ratings=this.context.ratings
   const packagings=this.context.packagings
-
+  
 
   return (
     <div className="StoreCard">
      
 
-
-<ul>
-        {result.map(store =>
+     {result.map(store =>
+<ul key={store.storeid}>
+        
              <>
              <br/>   
                 
             <Link to={`/store/:${store.storeid}`} ><li>{store.storename}</li></Link>
             
             <br/> 
-            <li>{store.website}</li> 
+            <li >{store.website}</li> 
             <br/> 
             <br/> 
             {packagings.map(packaging =>
             packaging.packagingsid===store.packagingsid
-            ? <li>Sustainable Packaging?: {packaging.packagingsdescription}</li>
+            ? <li key={packaging.packagingsid}>Sustainable Packaging?: {packaging.packagingsdescription}</li>
             : null)}
             <br/> 
             {ratings.map(rating =>
               rating.ratingsid===store.ratingsid
-              ?<li>Rating: {rating.ratingsdescription}</li>
+              ?<li key={rating.ratingsid}>Rating: {rating.ratingsdescription}</li>
             : null)}
              <br/> 
             
             <br/> 
-            <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
+            <li >Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
                   </>   
@@ -83,11 +82,11 @@ export default class StoreCard extends Component {
         
         
 
-        )}
+        
 
         </ul>
         
-    
+     )}
     </div>
   );
 }

@@ -81,7 +81,7 @@ export default class Stores extends Component {
               ?<li>Rating: {rating.ratingsdescription}</li>
             : null)}
              <br/> 
-            <li>{store.lastdatemodified}</li> 
+            <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
 

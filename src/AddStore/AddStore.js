@@ -55,9 +55,7 @@ export default class AddStore extends Component {
     }
   handleSubmit(e) {
       e.preventDefault();
-      let stores=this.context.stores
-      let date=new Date();
-      let today=(date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear()
+
       const store = {
        storename: e.target['storename'].value,
        website: e.target['website'].value,
@@ -67,7 +65,7 @@ export default class AddStore extends Component {
        ratingsid: 3
     
       }
-      console.log(store)
+      
       const url =`${config.API_ENDPOINT}/api/stores`
       const options = {
         method: 'POST',
@@ -132,7 +130,7 @@ export default class AddStore extends Component {
         const packingList = packagings.map((packaging) => {
             return(
               <option
-                key= {packagings.packagingsid}
+                key= {packaging.packagingsid}
                 value = {packaging.packagingsid}>
                 {packaging.packagingsdescription}
               </option>
@@ -162,7 +160,7 @@ export default class AddStore extends Component {
             className='field'
             name='packaging'
             id='packaging'
-            ref={this.context.packagings }
+            // ref={this.context.packagings }
             onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Sustainable Packaging?</option>
                 { packingList}
@@ -176,7 +174,7 @@ export default class AddStore extends Component {
             className='field'
             name='categories'
             id='categories'
-            ref={this.context.categories }
+            // ref={this.context.categories }
             onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Category</option>
                 { categoryList}
@@ -194,7 +192,7 @@ export default class AddStore extends Component {
             className='field'
             name='storeRating'
             id='storeRating'
-            ref={this.options }
+            // ref={this.options }
             required>
                 <option value={ null }>Select Rating</option>
                 { options }

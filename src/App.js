@@ -4,7 +4,6 @@ import './App.css';
 import Nav from './Nav/Nav.js';
 import AddStore from './AddStore/AddStore';
 // import EditStore from './AddStore/EditStore';
-import dummystore from'./dummystore.js';
 import CategoryStoreList from './CategoryStoreList/CategoryStoreList.js';
 import CategoryList from './CategoryStoreList/CategoryList.js';
 import ApiContext from './ApiContext'
@@ -65,7 +64,7 @@ export default class App extends Component {
     
   
   componentDidUpdate(){
-    setTimeout(() => this.setState({saved:''}), 9000);
+    setTimeout(() => this.setState({saved:''}), 10000);
   }
 
   handleStoreId=(store)=>{
@@ -133,7 +132,7 @@ export default class App extends Component {
       {['/category/:id'].map(path =>(
         <Route  
         exact
-        path={path} component={CategoryStoreList}/> 
+        path={path} key={path}  component={CategoryStoreList}/> 
         ))}
       
       </span>

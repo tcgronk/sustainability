@@ -17,9 +17,9 @@ render(){
         <div className="AllStores">
      
         <h2>{stores.length} Stores have been added to Shop Sustainably so far!</h2>
-
-        <ul>
-                {stores.map(store =>
+        {stores.map(store =>
+        <ul key={store.storeid}>
+                
                      <>
                      <br/>   
                         
@@ -31,12 +31,12 @@ render(){
                     <br/> 
                     {packagings.map(packaging =>
                     packaging.packagingsid===store.packagingsid
-                    ? <li>Sustainable Packaging?: {packaging.packagingsdescription}</li>
+                    ? <li key={packaging.packagingsid}>Sustainable Packaging?: {packaging.packagingsdescription}</li>
                     : null)}
                     <br/> 
                     {ratings.map(rating =>
                       rating.ratingsid===store.ratingsid
-                      ?<li>Rating: {rating.ratingsdescription}</li>
+                      ?<li key={rating.ratingsid}>Rating: {rating.ratingsdescription}</li>
                     : null)}
                     <br/> 
                     <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
@@ -48,10 +48,10 @@ render(){
                 
                 
                 
-                )}
+               
         
                 </ul>
-            
+             )}
             </div>
   );
 

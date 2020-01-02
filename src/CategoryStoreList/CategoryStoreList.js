@@ -53,7 +53,7 @@ export default class CategoryStoreList extends Component {
             </option>
           )
         })
-       
+        
         return (
             <div className="CategoryStoreList">
               <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
@@ -65,7 +65,6 @@ export default class CategoryStoreList extends Component {
                 className='field'
                 name='packaging'
                 id='packaging'
-                ref={packagings }
                 onChange={ e=>this.filterEntryPackaging(e) } required>
                     <option value={ null }>All</option>
                     { packingList }
@@ -76,7 +75,6 @@ export default class CategoryStoreList extends Component {
             className='field'
             name='storeRating'
             id='storeRating'
-            ref={this.options }
             onChange={ e=>this.filterEntryRating(e) } required>
             <option value={ null }>All</option>
                 { options }
