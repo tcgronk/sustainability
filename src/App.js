@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import './App.css';
 import Nav from './Nav/Nav.js';
 import AddStore from './AddStore/AddStore';
-// import EditStore from './AddStore/EditStore';
+import EditStore from './AddStore/EditStore';
 import CategoryStoreList from './CategoryStoreList/CategoryStoreList.js';
 import CategoryList from './CategoryStoreList/CategoryList.js';
 import ApiContext from './ApiContext'
@@ -28,8 +28,13 @@ export default class App extends Component {
   }
   static contextType = ApiContext    
 
-  handleEditStore=(store)=>{
-    this.setState({stores: 'hi'})
+  // handleEditStore=(store)=>{
+  //   this.setState({stores: 'hi'})
+    
+  // }
+  handleStoreId=(store)=>{
+    this.setState({id: store})
+    
   }
 
   handleAddStore=(store)=>{
@@ -67,10 +72,7 @@ export default class App extends Component {
     setTimeout(() => this.setState({saved:''}), 10000);
   }
 
-  handleStoreId=(store)=>{
-    this.setState({id: store})
-    
-  }
+ 
   renderBackButton(){
     if(this.state.back===false){
     this.setState({back: true})
@@ -122,7 +124,7 @@ export default class App extends Component {
       <Route exact path='/all-stores' component={AllStores}></Route>
       <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
-      {/* <Route exact path='/edit-store' component={()=><EditStore id={this.state.id} />}/> */}
+      <Route exact path='/edit-store' component={()=><EditStore id={this.state.id} />}/>
       {['/store/:id'].map(path =>(
         <Route  
         exact
@@ -155,15 +157,15 @@ export default class App extends Component {
     <div className="App">
       <header className="App-header">
         <Nav />
-        <Link to='/all-stores'><button>All stores</button></Link>
       
-      <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
       </header>
 
       <main>
         <br/>
       <h3>{this.state.saved}</h3>
       <span>{this.renderMainRoutes()}</span>
+      <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
+
       </main>
     </div>
     </ApiContext.Provider>

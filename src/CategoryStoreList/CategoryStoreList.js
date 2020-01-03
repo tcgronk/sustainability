@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import StoreCard from '../Stores/StoreCard'
 import { Link } from 'react-router-dom';
+import './CategoryStoreList.css'
 
 
 
@@ -27,12 +28,10 @@ export default class CategoryStoreList extends Component {
   
 
   render(){
+    let category={categoriesdescription: 'Food & Coffee'}
     const categoryId= parseInt(this.props.match.params.id)
-    let category=''
-    if(this.context.categories.length>0){
-    category=this.context.categories[categoryId-1].categoriesdescription
-    }
-    else category="Food & Coffee"
+    const categories=this.context.categories
+    category=categories.filter(category=>category.categoriesid===categoryId)
     const packagings = this.context.packagings
     const packingList = packagings.map((packaging) => {
         return(
@@ -57,10 +56,11 @@ export default class CategoryStoreList extends Component {
         return (
             <div className="CategoryStoreList">
               <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
-              <p>{category}</p>
+              <p className='categoryTitle'>{category[0].categoriesdescription}</p>
               <div className="filter-section">
-                <label htmlFor="packaging"><br/>Sustainable Packaging? {" "}<br/></label>
+                <label className='gridItem' htmlFor="packaging">Sustainable Packaging?</label>
                 <select
+                
                 type='text'
                 className='field'
                 name='packaging'
@@ -69,7 +69,7 @@ export default class CategoryStoreList extends Component {
                     <option value={ null }>All</option>
                     { packingList }
                 </select>
-                <label htmlFor="store-rating"><br/>Rating? {" "}<br/></label>
+                <label className='gridItem' htmlFor="store-rating"><br/>Rating? {" "}</label>
             <select
             type='text'
             className='field'

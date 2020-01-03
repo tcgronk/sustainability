@@ -39,7 +39,7 @@ render(){
                       ?<li key={rating.ratingsid}>Rating: {rating.ratingsdescription}</li>
                     : null)}
                     <br/> 
-                    <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
+                    <li>Date Added: {(store.lastdatemodified).slice(0,10)}</li> 
                            
                            <br/> 
                           </>   

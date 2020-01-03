@@ -104,7 +104,7 @@ export default class EditStore extends Component {
   render(){
     const stores=this.context.stores
     const id=this.props.id
-    const store=stores[(id-1)]
+    
     const ratings = this.context.ratings
     const options = ratings.map((rating) => {
         return(
@@ -125,7 +125,7 @@ export default class EditStore extends Component {
             </option>
           )
         })
-        const packagings = this.context.packaging
+        const packagings = this.context.packagings
         const packingList = packagings.map((packaging) => {
             return(
               <option
@@ -136,7 +136,8 @@ export default class EditStore extends Component {
             )
           })
 
- 
+  const store=stores.filter(store=>store.storeid===id)
+  
   return (
     <div className="Edit-Store">
         <p>Do you know of a store that is helping the world be more sustainable? Add it to the list, so more shoppers can check it out! <br/> {this.state.errorMsg}</p>
@@ -144,13 +145,13 @@ export default class EditStore extends Component {
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div class="form-section">
             <label for="storename">Store Name</label>
-            <input type="text" name="storename"id="storename"  value={this.context.stores[id-1].storename} defaultValue={this.context.stores[id-1].storename} onChange={this.handleAddStore} required/>
+            <input type="text" name="storename"id="storename"  value={store[0].storename}  onChange={this.handleAddStore} required/>
             <label for="website">Website</label>
-            <textarea name="website" rows="1" id="website" value={this.context.stores[id-1].website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="website" rows="1" id="website" value={store[0].website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
             <label for="comments">Sustainable Business Practices</label>
             <br/>
-            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.context.stores[id-1].comments} onChange={e => this.validateEntry(e)} required></textarea>
+            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={store[0].comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
@@ -161,9 +162,8 @@ export default class EditStore extends Component {
             className='field'
             name='packaging'
             id='packaging'
-            ref={this.context.packaging }
             onChange={e => this.validateEntry(e)} required>
-                <option value={null} >Sustainable Packaging?</option>
+                <option value={store[0].packagingid} >Sustainable Packaging?</option>
                 { packingList}
             </select>
             </div>
@@ -175,7 +175,7 @@ export default class EditStore extends Component {
             className='field'
             name='categories'
             id='categories'
-            ref={this.context.categories }
+            ref={store[0].categories }
             onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Category</option>
                 { categoryList}

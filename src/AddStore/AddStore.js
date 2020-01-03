@@ -17,6 +17,7 @@ export default class AddStore extends Component {
             packagingValid:false,
             categoryValid:false,
             categoriesValid:false,
+            storeRatingValid:false,
             errorMsg: 'Please fill out all fields'
         }
     }
@@ -25,24 +26,41 @@ export default class AddStore extends Component {
     validateEntry=(e)=>{
         e.preventDefault();
         const value=e.target.value.trim()
+        console.log(value)
         const name=e.target.name
         if(value.length<1){
           this.setState({
             [`${name}Valid`]: false
-          })
-          }
+          },()=>{this.validateForm()})}
+          else if(value==='Sustainable Packaging?'){
+
+          this.setState({
+            [`${name}Valid`]: false
+          },()=>{this.validateForm()})}
+          else if(value==='Select Category'){
+
+            this.setState({
+              [`${name}Valid`]: false
+            },()=>{this.validateForm()})}
+          else if(value==='Select Rating'){
+
+              this.setState({
+                [`${name}Valid`]: false
+              },()=>{this.validateForm()})}
         else
         this.setState({
           [`${name}Valid`]: true, 
           
-        })
-
-       this.validateForm()
+        },()=>{this.validateForm()})
+      
+        console.log(this.state)
+       
 
     }
 
-    validateForm(){
-      if(this.state.storenameValid===false || this.state.websiteValid===false || this.state.commentsValid===false  ){
+    validateForm=()=>{
+
+      if(this.state.storenameValid===false  || this.state.websiteValid===false || this.state.commentsValid===false || this.state.storeRatingValid===false ||this.state.packagingValid===false  || this.state.categoriesValid===false ){
         this.setState({
           errorMsg: 'Please fill out all fields',
           formValid: false
@@ -62,10 +80,10 @@ export default class AddStore extends Component {
        comments: e.target['comments'].value,
        packagingsid: parseInt(e.target['packaging'].value,10),
        categoriesid: parseInt(e.target['categories'].value,10),
-       ratingsid: 3
+       ratingsid: parseInt(e.target['storeRating'].value,10)
     
       }
-      
+      console.log(store)
       const url =`${config.API_ENDPOINT}/api/stores`
       const options = {
         method: 'POST',
@@ -142,19 +160,25 @@ export default class AddStore extends Component {
         <section>
         <form id="record-store"  onSubmit={e => this.handleSubmit(e)}>
             <div className="form-section">
-            <label htmlFor="storename">Store Name</label>
+  <label htmlFor="storename">Store Name:{' '}</label>
             <input type="text" name="storename"id="storename" placeholder="Store Name" value={this.storename} onChange={e => this.validateEntry(e)} required/>
-            <label htmlFor="website">Website</label>
-            <textarea name="website" rows="1" id="website" value={this.website} placeholder="Website" onChange={e => this.validateEntry(e)} required></textarea>
             <br/>
-            <label htmlFor="comments">Sustainable Business Practices</label>
             <br/>
-            <textarea name="comments" rows="12" id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
+            <label htmlFor="website">Website:{' '}</label>
+            <input name="website" rows="1" id="website" value={this.website} placeholder="Website" onChange={e => this.validateEntry(e)} required></input>
+            <br/>
+            <br/>
+            <label htmlFor="comments">What makes this store a sustainable choice?</label>
+            <br/>
+            <br/>
+            <textarea name="comments" rows="12" cols='40' id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
             <div>
                 <label htmlFor="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
+                <br/>
                 <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
+                <br/>
             <select
             type='text'
             className='field'
@@ -168,23 +192,23 @@ export default class AddStore extends Component {
             </div>
             <br/>
             <div className="form-section">
-            <label htmlFor="categories"><br/>Categories:{" "}<br/></label>
+            <label htmlFor="categories"><br/>Which category best fits this store? {" "}<br/></label>
+            <br/>
             <select
             type='text'
             className='field'
             name='categories'
             id='categories'
-            // ref={this.context.categories }
             onChange={e => this.validateEntry(e)} required>
                 <option value={ null }>Select Category</option>
                 { categoryList}
             </select>
 
-            </div>
+            
             <br/>
-            <div className="form-section">
+            
             <p>Select Rating </p>
-            <p> Based on your experience, rate the level of sustainable business practices from 1 somewhat sustainable, 2 significant sustainability efforts, 3 excellent sustainability, 4 totally waste free.</p>
+            <p> Based on your experience, rate the level of sustainable business practices from somewhat sustainable, significant sustainability efforts, excellent sustainability, totally waste free.</p>
 
           <label htmlFor="store-rating"><br/>Rating:{" "}<br/></label>
             <select
@@ -192,14 +216,17 @@ export default class AddStore extends Component {
             className='field'
             name='storeRating'
             id='storeRating'
-            // ref={this.options }
-            required>
+            onChange={e => this.validateEntry(e)} required>
+
                 <option value={ null }>Select Rating</option>
                 { options }
             </select>
             </div>
-          <button type="submit"  disabled={!this.state.formValid}>Submit</button>
-          <button type="reset"onClick={e => this.handleCancelAdd()}>Cancel</button>
+            <br/>
+            <div className="Buttons">
+          <button className='navButton' type="submit"  disabled={!this.state.formValid}>Submit</button>
+          <button className='navButton' type="reset"onClick={e => this.handleCancelAdd()}>Cancel</button>
+          </div>
         </form>
       </section>
     </div>

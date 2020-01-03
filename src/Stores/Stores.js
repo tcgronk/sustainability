@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
-import { Link } from 'react-router-dom';
 import config from '../config'
 
 
@@ -9,6 +8,7 @@ export default class Stores extends Component {
 
   handleEdit(id){
     const storeid=id
+    console.log(storeid)
     this.context.handleStoreId(storeid)
   }
   handleClickDelete = e => {
@@ -51,21 +51,27 @@ export default class Stores extends Component {
     }
     const ratings=this.context.ratings
     const packagings=this.context.packagings
-
-  
+    const categories=this.context.categories
     return (
     <div className="Stores">
      
 
-
-<ul>
-        {storeArr.map(store =>
+     {storeArr.map(store =>
+<ul key={store.storeid}>
+       
              <>
              <br/>   
                     
              <li>{store.storename}</li>
                    
             <br/> 
+            {categories.map(category =>
+              category.categoriesid===store.categoriesid
+              ?<li key={category.categoriesid}>Category: {category.categoriesdescription} </li>
+              :null)}
+            
+                   
+                   <br/> 
             <li>{store.website}</li> 
                    
                    <br/> 
@@ -73,19 +79,19 @@ export default class Stores extends Component {
             <br/> 
             {packagings.map(packaging =>
             packaging.packagingsid===store.packagingsid
-            ? <li>Sustainable Packaging?: {packaging.packagingsdescription}</li>
+            ? <li key={packaging.packagingsid}>Sustainable Packaging?: {packaging.packagingsdescription}</li>
             : null)}
             <br/> 
             {ratings.map(rating =>
               rating.ratingsid===store.ratingsid
-              ?<li>Rating: {rating.ratingsdescription}</li>
+              ?<li key={rating.ratingsid}>Rating: {rating.ratingsdescription}</li>
             : null)}
              <br/> 
             <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
 
-            <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link>
+            {/* <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link> */}
                     
            
            <button className='store__delete'
@@ -95,9 +101,10 @@ export default class Stores extends Component {
            </> 
         
         
-        )}
+        
 
         </ul>
+      )}
     
     </div>
   );

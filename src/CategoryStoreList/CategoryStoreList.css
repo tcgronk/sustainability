@@ -2,3 +2,29 @@
     min-height: 100vh;
    
 }
+.filter-section{
+
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-columns: auto auto;
+    grid-auto-columns: auto ;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+
+
+.gridItem{
+    grid-row: 1;
+    height: 35px;
+    text-align: center;
+
+}
+.field{
+    width: auto
+}
+.categoryTitle{
+    color: rgb(1, 1, 114);
+    font-size: 30px;
+    text-align: center;
+}
