@@ -7,12 +7,9 @@
   padding: 0px;
 }
 
-.cards{
-    display: flex;
-    justify-content: center;
-}
+
 .card {
-  width: 300px;
+  width: 100%;
   padding: 0px;
   height: 100%;
   /* position: absolute;
@@ -36,8 +33,13 @@
 .storeList{
     padding: 0;
 } */
-
+@media only screen and (min-width: 600px) {
+    .cards{
+        display: flex;
+        justify-content: center;
+    }
 .card {
+    width: 300px;
     background: white;
     border-radius: 1rem;
     border: rgb(1, 1, 114) 4px solid;
@@ -48,10 +50,11 @@
   .card:not(:first-child) {
     margin-left: -10rem;
   }
-  .card:not(:last-child):hover,
-  .card:not(:last-child):focus-within {
+  .card:hover,
+  .card:focus-within {
     transform: translateY(-1rem);
      /* ~ .card {
       transform: translateX(2rem);
     } */
   }
+}

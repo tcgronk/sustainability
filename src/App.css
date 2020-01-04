@@ -32,7 +32,9 @@ h1{
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.a:hover,a:visited,a::before{
+  color: rgb(1, 1, 114)
+}
 .App-link {
   color: #61dafb;
 }
