@@ -1,0 +1,55 @@
+.card-container {
+  width: 80%;
+  overflow: scroll;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  padding: 0px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+}
+.card {
+  width: 300px;
+  padding: 0px;
+  height: 100%;
+  /* position: absolute;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out; */
+
+}
+/* .card:hover {
+  transform: rotateY(180deg);
+} */
+/* .card .side {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.storeList{
+    padding: 0;
+} */
+
+.card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 3px 3px 12px 2px rgba(black, 0.6);
+    transition: 0.2s;
+  }
+  .card:not(:first-child) {
+    margin-left: -2rem;
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-1rem);
+     /* ~ .card {
+      transform: translateX(2rem);
+    } */
+  }

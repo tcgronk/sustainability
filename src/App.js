@@ -164,7 +164,7 @@ export default class App extends Component {
         <br/>
       <h3>{this.state.saved}</h3>
       <span>{this.renderMainRoutes()}</span>
-      <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
+     
 
       </main>
     </div>

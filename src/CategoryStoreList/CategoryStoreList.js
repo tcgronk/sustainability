@@ -55,7 +55,7 @@ export default class CategoryStoreList extends Component {
         
         return (
             <div className="CategoryStoreList">
-              <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
+              <div className="back"><Link to='/' className ='side back'><button>Back to All Categories</button></Link></div>
               <p className='categoryTitle'>{category[0].categoriesdescription}</p>
               <div className="filter-section">
                 <label className='gridItem' htmlFor="packaging">Sustainable Packaging?</label>

@@ -18,6 +18,8 @@ export default class App extends Component {
   return (
     <div className="List">
       <p className='mission'>Want to live more sustainably, but not sure what resources are available? <br/><br/> Shop sustainably is a collection of stores that are making efforts to be more sustainable. Know of a sustainable store that more people should know about? Add it to the list!</p>
+      <br/><br/>
+      <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
       <br/><br/> 
       <ul className='grid' >
       {/* <ul > */}

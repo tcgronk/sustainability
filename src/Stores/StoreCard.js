@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import { Link } from 'react-router-dom';
-
+import './StoreCard.css'
 
 export default class StoreCard extends Component {
 
@@ -46,16 +46,18 @@ export default class StoreCard extends Component {
   
 
   return (
-    <div className="StoreCard">
-     
+    <div className="card-container">
+
+     <div className='cards'>
 
      {result.map(store =>
-<ul key={store.storeid}>
-        
+       
+<ul key={store.storeid} className="card">
+        <div >
              <>
              <br/>   
-                
-            <Link to={`/store/:${store.storeid}`} ><li>{store.storename}</li></Link>
+             <br/><br/>
+            <Link to={`/store/:${store.storeid}`}  ><li>{store.storename}</li></Link>
             
             <br/> 
             <li >{store.website}</li> 
@@ -82,11 +84,12 @@ export default class StoreCard extends Component {
         
         
 
-        
+                  </div>
 
         </ul>
         
      )}
+    </div>
     </div>
   );
 }

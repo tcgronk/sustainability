@@ -57,8 +57,9 @@ export default class Stores extends Component {
      
 
      {storeArr.map(store =>
-<ul key={store.storeid}>
-       
+      
+<ul key={store.storeid} >
+<div >
              <>
              <br/>   
                     
@@ -101,9 +102,11 @@ export default class Stores extends Component {
            </> 
         
         
-        
+           </div>
 
         </ul>
+       
+        
       )}
     
     </div>
