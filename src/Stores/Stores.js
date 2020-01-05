@@ -4,13 +4,9 @@ import config from '../config'
 
 
 export default class Stores extends Component {
+
   static contextType = ApiContext    
 
-  handleEdit(id){
-    const storeid=id
-    console.log(storeid)
-    this.context.handleStoreId(storeid)
-  }
   handleClickDelete = e => {
     e.preventDefault()
     const storeid = parseInt((this.props.match.params.id).slice(1),10)
@@ -88,14 +84,13 @@ export default class Stores extends Component {
               ?<li key={rating.ratingsid}>Rating: {rating.ratingsdescription}</li>
             : null)}
              <br/> 
-            <li>Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
+            <li>Date Added:{(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
 
-            {/* <Link to='/edit-store'><button onClick={()=>this.handleEdit(id)} >Edit Store</button></Link> */}
                     
            
-           <button className='store__delete'
+           <button className='storeDelete' 
           type='button'
           onClick={this.handleClickDelete}>Delete Store</button>
 

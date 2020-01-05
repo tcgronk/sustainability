@@ -18,17 +18,16 @@ export default class App extends Component {
   return (
     <div className="List">
       <p className='mission'>Want to live more sustainably, but not sure what resources are available? <br/><br/> Shop sustainably is a collection of stores that are making efforts to be more sustainable. Know of a sustainable store that more people should know about? Add it to the list!</p>
-      <br/><br/>
+      <br/>
       <p>Find sustainable stores by selecting a category below or <Link to='/addstore'>add new stores here </Link>to the list!</p>
-      <br/><br/> 
+      <br/>
       <ul className='grid' >
-      {/* <ul > */}
 
       
       {categories.map(category =>
 
         
-       <li key={category.categoriesid} ><Link to={`category/${category.categoriesid.toString()}`}><button className='iconButton' ><FontAwesomeIcon className='icon' icon={(category.icons).slice(7)}/> <br/><br/>{category.categoriesdescription}</button></Link></li> 
+       <li key={category.categoriesid} ><Link to={`category/ ${category.categoriesid}`} ><button className='iconButton' ><FontAwesomeIcon className='icon' icon={(category.icons).slice(7)}/> <br/><br/>{category.categoriesdescription}</button></Link></li> 
  
      )}     
         

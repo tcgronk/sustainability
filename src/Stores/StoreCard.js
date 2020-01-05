@@ -15,7 +15,6 @@ export default class StoreCard extends Component {
     const stores= this.context.stores
     let result=[]
     const id=this.props.id
-    // storeArr=(stores.filter(store => store.category ===id))
       
     storeArr=[]
     if(this.props.value === 1 || this.props.value === 2 || this.props.value === 3 || this.props.value === 4 ){
@@ -75,7 +74,7 @@ export default class StoreCard extends Component {
              <br/> 
             
             <br/> 
-            <li >Last Modified: {(store.lastdatemodified).slice(0,10)}</li> 
+            <li >Date Added: {(store.lastdatemodified).slice(0,10)}</li> 
                    
                    <br/> 
                   </>   

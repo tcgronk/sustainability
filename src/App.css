@@ -24,7 +24,7 @@ h1{
 .App-header {
   font-family: 'Roboto', sans-serif;
   background-color: rgb(129, 155, 177);
-  height: 200px;
+  height: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,4 +48,8 @@ li{
   to {
     transform: rotate(360deg);
   }
+}
+
+main{
+  padding: 5px;
 }

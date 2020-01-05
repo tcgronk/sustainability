@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import { Link } from 'react-router-dom';
-
+import './AllStores.css'
 
 export default class AllStores extends Component {
 
@@ -12,27 +12,26 @@ export default class AllStores extends Component {
 render(){
       const stores = this.context.stores
       const ratings=this.context.ratings
-      const packagings=this.context.packagings
+      const categories=this.context.categories
       return (
-        <div className="AllStores">
+        <div className="AllStores" >
      
         <h2>{stores.length} Stores have been added to Shop Sustainably so far!</h2>
+        <div className='storegrid'>
         {stores.map(store =>
-        <ul key={store.storeid}>
+        <ul key={store.storeid} >
                 
                      <>
                      <br/>   
                         
                     <Link to={`/store/:${store.storeid}`} ><li>{store.storename}</li></Link>
-                    <br/> 
-                    <li>{store.categories}</li> 
+                    <br/>
+                    {categories.map(category =>
+                    category.categoriesid===store.categoriesid
+                    ?<li key={category.categoriesid}>Category: {category.categoriesdescription} </li>
+                    :null)}
                     <br/> 
                     <li>{store.website}</li> 
-                    <br/> 
-                    {packagings.map(packaging =>
-                    packaging.packagingsid===store.packagingsid
-                    ? <li key={packaging.packagingsid}>Sustainable Packaging?: {packaging.packagingsdescription}</li>
-                    : null)}
                     <br/> 
                     {ratings.map(rating =>
                       rating.ratingsid===store.ratingsid
@@ -51,7 +50,9 @@ render(){
                
         
                 </ul>
+                
              )}
+            </div>
             </div>
   );
 

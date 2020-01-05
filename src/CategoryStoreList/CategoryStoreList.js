@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ApiContext from '../ApiContext'
 import StoreCard from '../Stores/StoreCard'
-import { Link } from 'react-router-dom';
 import './CategoryStoreList.css'
 
 
@@ -28,10 +27,14 @@ export default class CategoryStoreList extends Component {
   
 
   render(){
-    let category={categoriesdescription: 'Food & Coffee'}
     const categoryId= parseInt(this.props.match.params.id)
-    const categories=this.context.categories
-    category=categories.filter(category=>category.categoriesid===categoryId)
+    let category=''
+    let categories=this.context.categories
+    for(let i=0; i<categories.length; i++){
+      if(categories[i].categoriesid===categoryId){
+        category=categories[i].categoriesdescription
+      }
+    }
     const packagings = this.context.packagings
     const packingList = packagings.map((packaging) => {
         return(
@@ -54,9 +57,10 @@ export default class CategoryStoreList extends Component {
         })
         
         return (
-            <div className="CategoryStoreList">
-              <div className="back"><Link to='/' className ='side back'><button>Back to All Categories</button></Link></div>
-              <p className='categoryTitle'>{category[0].categoriesdescription}</p>
+          
+            <div className="CategoryStoreList" >
+              
+              <p className='categoryTitle'>{category}</p>
               <div className="filter-section">
                 <label className='gridItem' htmlFor="packaging">Sustainable Packaging?</label>
                 <select
@@ -79,12 +83,13 @@ export default class CategoryStoreList extends Component {
             <option value={ null }>All</option>
                 { options }
             </select>
+            <br/> <br/>
             </div>
             <StoreCard  value={this.state.value} rating={this.state.rating} id={categoryId}/>
-
+          
            
           </div>
-    );
+       );
   
 
 

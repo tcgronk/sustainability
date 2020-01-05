@@ -1,0 +1,19 @@
+
+
+@media only screen and (min-width: 550px) {
+
+.storegrid{
+    display: grid;
+    grid-template-columns: auto auto;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
+
+@media only screen and (min-width: 800px) {
+
+    .storegrid{
+        grid-template-columns: auto auto auto;
+    }
+    }

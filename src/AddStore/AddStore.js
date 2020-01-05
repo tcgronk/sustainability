@@ -53,7 +53,6 @@ export default class AddStore extends Component {
           
         },()=>{this.validateForm()})
       
-        console.log(this.state)
        
 
     }
@@ -174,10 +173,26 @@ export default class AddStore extends Component {
             <textarea name="comments" rows="12" cols='40' id="comments" placeholder="Comments" value={this.comments} onChange={e => this.validateEntry(e)} required></textarea>
             </div>
             <br/>
+            <label htmlFor="categories"><br/>Category:{" "}<br/></label>
+            <br/>
+            <label htmlFor="categories"><br/>Which category best fits this store? {" "}<br/></label>
+            <br/>
+            <select
+            type='text'
+            className='field'
+            name='categories'
+            id='categories'
+            onChange={e => this.validateEntry(e)} required>
+                <option value={ null }>Select Category</option>
+                { categoryList}
+            </select> 
+            <br/> <br/> 
             <div>
+                <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
+                <br/>
+                <br/>
                 <label htmlFor="packaging">Based on your experience, do you think this store has sustainable packaging?</label>
                 <br/>
-                <label htmlFor="packaging"><br/>Packaging:{" "}<br/></label>
                 <br/>
             <select
             type='text'
@@ -191,26 +206,24 @@ export default class AddStore extends Component {
             </select>
             </div>
             <br/>
-            <div className="form-section">
-            <label htmlFor="categories"><br/>Which category best fits this store? {" "}<br/></label>
             <br/>
-            <select
-            type='text'
-            className='field'
-            name='categories'
-            id='categories'
-            onChange={e => this.validateEntry(e)} required>
-                <option value={ null }>Select Category</option>
-                { categoryList}
-            </select>
-
+            <div className="form-section">          
             
+            <label htmlFor="store-rating">Rating:{" "}</label>
             <br/>
-            
-            <p>Select Rating </p>
-            <p> Based on your experience, rate the level of sustainable business practices from somewhat sustainable, significant sustainability efforts, excellent sustainability, totally waste free.</p>
+            <br/>
+            <ul id='sustainabilityOptions'> Based on your experience, rate the level of sustainable business practices from: 
+              <br/> <br/> 
+              <li><b>Somewhat Sustainable:</b> Uses some sustainable business practices or materials</li>
+              <br/>
+              <li><b>Significant Sustainability:</b> Sustainability is built into the mission of the company</li>
+              <br/>
+              <li><b>Excellent Sustainability:</b> Nearly all facets of the business focus on sustainability</li>
+              <br/>
+              <li><b>Waste Free:</b> The company fully re-purposes all waste and has a plan to offset their carbon footprint</li>
+              </ul>
 
-          <label htmlFor="store-rating"><br/>Rating:{" "}<br/></label>
+         <br/>
             <select
             type='text'
             className='field'
@@ -223,10 +236,14 @@ export default class AddStore extends Component {
             </select>
             </div>
             <br/>
+            <br/>
             <div className="Buttons">
           <button className='navButton' type="submit"  disabled={!this.state.formValid}>Submit</button>
           <button className='navButton' type="reset"onClick={e => this.handleCancelAdd()}>Cancel</button>
+          
           </div>
+          <br/>
+            <br/>
         </form>
       </section>
     </div>

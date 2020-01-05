@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import './App.css';
 import Nav from './Nav/Nav.js';
 import AddStore from './AddStore/AddStore';
@@ -16,7 +16,7 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state={
-      id: {},
+      
       stores: [],
       categories: [],
       ratings: [],
@@ -28,14 +28,8 @@ export default class App extends Component {
   }
   static contextType = ApiContext    
 
-  // handleEditStore=(store)=>{
-  //   this.setState({stores: 'hi'})
-    
-  // }
-  handleStoreId=(store)=>{
-    this.setState({id: store})
-    
-  }
+
+
 
   handleAddStore=(store)=>{
      fetch(`${config.API_ENDPOINT}/api/stores`, {
@@ -124,7 +118,6 @@ export default class App extends Component {
       <Route exact path='/all-stores' component={AllStores}></Route>
       <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
-      <Route exact path='/edit-store' component={()=><EditStore id={this.state.id} />}/>
       {['/store/:id'].map(path =>(
         <Route  
         exact
@@ -134,16 +127,14 @@ export default class App extends Component {
       {['/category/:id'].map(path =>(
         <Route  
         exact
-        path={path} key={path}  component={CategoryStoreList}/> 
+        key={path} path={path}  component={CategoryStoreList} /> 
         ))}
       
       </span>
     )
   }
   render(){
-    // const backButton = this.state.back
-    // ? <div className="back"><Link to='/'><button>Back to All Categories</button></Link></div>
-    // : "";
+
   return (
     <ApiContext.Provider value={{
       stores: this.state.stores,
@@ -151,7 +142,6 @@ export default class App extends Component {
       ratings: this.state.ratings,
       packagings: this.state.packagings,
       handleAddStore: this.handleAddStore,
-      handleStoreId: this.handleStoreId,
       handleDeleteStore: this.handleDeleteStore
   }}>
     <div className="App">
