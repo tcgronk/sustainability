@@ -3,13 +3,13 @@ import { Route} from 'react-router-dom';
 import './App.css';
 import Nav from './Nav/Nav.js';
 import AddStore from './AddStore/AddStore';
-import EditStore from './AddStore/EditStore';
 import CategoryStoreList from './CategoryStoreList/CategoryStoreList.js';
 import CategoryList from './CategoryStoreList/CategoryList.js';
 import ApiContext from './ApiContext'
 import AllStores from './AllStores/AllStores'
 import Stores from './Stores/Stores'
 import config from './config'
+import ErrorBoundary from './ErrorBoundary'
 
 
 export default class App extends Component {
@@ -115,14 +115,14 @@ export default class App extends Component {
   renderMainRoutes(){
     return(
       <span>
-      
-      <Route exact path='/all-stores' component={AllStores}></Route>
       <Route exact path='/' component={CategoryList}/>
       <Route exact path='/addstore' component={AddStore}/>
+      <ErrorBoundary>
+      <Route exact path='/all-stores' component={AllStores}></Route>
       {['/store/:id'].map(path =>(
         <Route  
-        exact
         key={path} 
+        exact
         path={path} component={Stores}/> 
         ))}      
       {['/category/:id'].map(path =>(
@@ -130,7 +130,7 @@ export default class App extends Component {
         exact
         key={path} path={path}  component={CategoryStoreList} /> 
         ))}
-      
+      </ErrorBoundary>
       </span>
     )
   }

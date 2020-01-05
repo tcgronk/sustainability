@@ -6,7 +6,7 @@
   
 }
 .icon{
-    font-size:55px;
+    font-size:50px;
     color: rgb(1, 1, 114);
 }
 
@@ -29,6 +29,9 @@
         grid-template-columns: auto auto auto auto; 
           grid-gap: 20px;
 
+    }
+    .icon{
+        font-size:55px;
     }
 
 }
