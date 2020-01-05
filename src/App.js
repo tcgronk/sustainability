@@ -104,7 +104,8 @@ export default class App extends Component {
 
   handleDeleteStore=(storeid)=>{
     this.setState({
-      stores: this.state.stores.filter(store => store.storeid !== storeid )
+      stores: this.state.stores.filter(store => store.storeid !== storeid ),
+      
     })
   
   

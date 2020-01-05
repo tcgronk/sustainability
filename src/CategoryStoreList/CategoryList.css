@@ -13,14 +13,13 @@
 .grid{
    display: grid;
    grid-template-columns: auto auto;
-   max-width: 500px;
-   grid-gap: 20px;
+   max-width: 75%;
    margin-left: auto;
    margin-right: auto;
    padding: 0;
 }
 .mission{
-    max-width: 450px;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -28,7 +27,8 @@
 @media only screen and (min-width: 500px) {
     .grid{
         grid-template-columns: auto auto auto auto; 
-       
+          grid-gap: 20px;
+
     }
 
 }

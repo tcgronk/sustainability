@@ -10,7 +10,6 @@ export default class Stores extends Component {
   handleClickDelete = e => {
     e.preventDefault()
     const storeid = parseInt((this.props.match.params.id).slice(1),10)
-    console.log(storeid)
     fetch(`${config.API_ENDPOINT}/api/stores/${storeid}`, {
       method: 'DELETE',
       

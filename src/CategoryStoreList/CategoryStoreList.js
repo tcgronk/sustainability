@@ -62,7 +62,7 @@ export default class CategoryStoreList extends Component {
               
               <p className='categoryTitle'>{category}</p>
               <div className="filter-section">
-                <label className='gridItem' htmlFor="packaging">Sustainable Packaging?</label>
+                <label className='gridItem' htmlFor="packaging">Sustainable <br/> Packaging?{" "}</label>
                 <select
                 
                 type='text'
@@ -73,7 +73,8 @@ export default class CategoryStoreList extends Component {
                     <option value={ null }>All</option>
                     { packingList }
                 </select>
-                <label className='gridItem' htmlFor="store-rating"><br/>Rating? {" "}</label>
+
+            <label className='gridItem' htmlFor="store-rating"><br/>Rating? {"  "}</label>
             <select
             type='text'
             className='field'

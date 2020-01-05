@@ -26,7 +26,6 @@ export default class AddStore extends Component {
     validateEntry=(e)=>{
         e.preventDefault();
         const value=e.target.value.trim()
-        console.log(value)
         const name=e.target.name
         if(value.length<1){
           this.setState({
@@ -82,7 +81,7 @@ export default class AddStore extends Component {
        ratingsid: parseInt(e.target['storeRating'].value,10)
     
       }
-      console.log(store)
+      
       const url =`${config.API_ENDPOINT}/api/stores`
       const options = {
         method: 'POST',
