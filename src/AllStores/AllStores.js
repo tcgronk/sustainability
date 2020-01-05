@@ -19,7 +19,7 @@ render(){
         <h2>{stores.length} Stores have been added to Shop Sustainably so far!</h2>
         <div className='storegrid'>
         {stores.map(store =>
-        <ul key={store.storeid} >
+        <ul className='allStoreList' key={store.storeid} >
                 
                      <>
                      <br/>   
