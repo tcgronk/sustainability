@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export default React.createContext({
-stores: [],
-categories: [],
-ratings: [],
-packagings: [],
-handleAddStore: ()=>{},
-handleDeleteStore: ()=>{},
-handleCount: ()=>{}
-})
+  stores: [],
+  categories: [],
+  ratings: [],
+  packagings: [],
+  handleAddStore: () => {},
+  handleDeleteStore: () => {},
+  handleCount: () => {}
+});
