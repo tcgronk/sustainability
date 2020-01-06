@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import { Link } from "react-router-dom";
-import "./AllStores.css";
+// import "./AllStores.css";
 
 export default class AllStores extends Component {
   static contextType = ApiContext;

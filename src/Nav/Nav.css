@@ -1,23 +1,22 @@
-.monstrera{
-    height: 30px;
-    width: auto;
+.monstrera {
+  height: 30px;
+  width: auto;
 }
-.Buttons{
-    display:flex;
-    justify-content: space-evenly;
-    width: 250px;
-    margin-right: auto;
-    margin-left: auto;
-    
+.Buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 250px;
+  margin-right: auto;
+  margin-left: auto;
 }
-.navButton{
+/* .navButton{
     width: 90px;
     height: 55px;
     font-size: 18px;
     background: white;
     border: rgb(1, 1, 114) 4px solid;
     border-radius: 9%;
-}
-.link{
-    text-decoration: none;
+} */
+.link {
+  text-decoration: none;
 }

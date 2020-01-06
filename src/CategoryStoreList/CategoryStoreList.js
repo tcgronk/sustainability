@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import StoreCard from "../Stores/StoreCard";
-import "./CategoryStoreList.css";
+// import "./CategoryStoreList.css";
 
 export default class CategoryStoreList extends Component {
   constructor(props) {
