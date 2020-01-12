@@ -1,10 +1,9 @@
 .App {
   text-align: center;
 }
-h1{
+h1 {
   font-size: 38px;
   color: white;
-
 }
 .App-logo {
   height: 40vmin;
@@ -17,12 +16,12 @@ h1{
   }
 }
 
-*{
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
 
 .App-header {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: rgb(129, 155, 177);
   height: 180px;
   display: flex;
@@ -32,13 +31,15 @@ h1{
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.a:hover,a:visited,a::before{
-  color: rgb(1, 1, 114)
+.a:hover,
+a:visited,
+a:link {
+  color: rgb(1, 1, 114);
 }
 .App-link {
   color: #61dafb;
 }
-li{
+li {
   list-style-type: none;
 }
 @keyframes App-logo-spin {
@@ -50,6 +51,6 @@ li{
   }
 }
 
-main{
+main {
   padding: 5px;
 }

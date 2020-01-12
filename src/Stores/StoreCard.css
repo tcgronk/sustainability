@@ -7,38 +7,21 @@
   padding: 0px;
 }
 
-
+ul {
+  padding: 0;
+}
 .card {
   width: 100%;
   padding: 0px;
   height: 100%;
-  /* position: absolute;
-  transform-style: preserve-3d;
-  transition: all 1s ease-in-out; */
-
-}
-/* .card:hover {
-  transform: rotateY(180deg);
-} */
-/* .card .side {
-  backface-visibility: hidden;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
-.card .back {
-  transform: rotateY(180deg);
 }
 
-.storeList{
-    padding: 0;
-} */
 @media only screen and (min-width: 600px) {
-    .cards{
-        display: flex;
-        justify-content: center;
-    }
-.card {
+  .cards {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
     width: 300px;
     background: white;
     border-radius: 1rem;
@@ -53,16 +36,20 @@
   .card:hover,
   .card:focus-within {
     transform: translateY(-1rem);
-
+  }
+  .Stores {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-.storeDelete{
-    color: red;
-    width: 90px;
-    height: 55px;
-    font-size: 18px;
-    background: white;
-    border: rgb(1, 1, 114) 4px solid;
-    border-radius: 9%;
+.storeDelete {
+  color: red;
+  width: 90px;
+  height: 55px;
+  font-size: 18px;
+  background: white;
+  border: rgb(1, 1, 114) 4px solid;
+  border-radius: 9%;
 }

@@ -13,7 +13,7 @@ import {
   faCoffee,
   faFootballBall
 } from "@fortawesome/free-solid-svg-icons";
-// import "./CategoryList.css";
+import "./CategoryList.css";
 
 library.add(
   faTshirt,

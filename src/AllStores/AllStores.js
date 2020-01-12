@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import { Link } from "react-router-dom";
-// import "./AllStores.css";
+import "./AllStores.css";
 
 export default class AllStores extends Component {
   static contextType = ApiContext;
@@ -21,9 +21,12 @@ export default class AllStores extends Component {
               <>
                 <br />
 
-                <Link to={`/store/:${store.storeid}`}>
-                  <li>{store.storename}</li>
-                </Link>
+                <li>
+                  <Link to={`/store/:${store.storeid}`}>
+                    <h3 className="button">{store.storename}</h3>
+                  </Link>
+                </li>
+
                 <br />
                 {categories.map(category =>
                   category.categoriesid === store.categoriesid ? (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
-// import "./AddStore.css";
+import "./AddStore.css";
 import config from "../config";
 
 export default class AddStore extends Component {
