@@ -16,6 +16,7 @@
   background: white;
   border: rgb(1, 1, 114) 4px solid;
   border-radius: 9%;
+  text-align: center;
 }
 .link {
   text-decoration: none;

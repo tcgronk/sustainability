@@ -1,14 +1,6 @@
 .allStoreList {
   padding: 0px;
 }
-.button:hover,
-.button:focus {
-  background: rgb(1, 1, 114);
-  color: white;
-}
-.button::before {
-  color: rgb(1, 1, 114);
-}
 
 @media only screen and (min-width: 550px) {
   .storegrid {
@@ -17,6 +9,11 @@
     max-width: 80%;
     margin-left: auto;
     margin-right: auto;
+  }
+  .button:hover,
+  .button:focus {
+    background: rgb(1, 1, 114);
+    color: white;
   }
 }
 
