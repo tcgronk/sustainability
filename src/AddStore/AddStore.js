@@ -252,6 +252,29 @@ export default class AddStore extends Component {
               </label>
               <br />
               <br />
+              <ul id="sustainabilityOptions">
+                <br />
+                <li>
+                  <b>Yes:</b> Packaging is made from reusable or recyclable
+                  materials.
+                </li>
+                <br />
+                <li>
+                  <b>No:</b> Packaging uses traditionally wasteful materials
+                  like single use plastic.
+                </li>
+                <br />
+                <li>
+                  <b>N/A:</b> Packaging does not apply to this company
+                </li>
+                <br />
+                <li>
+                  <b>Somewhat:</b> The company offers some sustainable options,
+                  but still uses some traditionally wasteful materials like
+                  single use plastic.
+                </li>
+              </ul>
+              <br />
               <select
                 type="text"
                 className="field"
@@ -275,7 +298,7 @@ export default class AddStore extends Component {
                 {" "}
                 Based on your experience, rate the level of sustainable business
                 practices from:
-                <br /> <br />
+                <br /> <br /> <br />
                 <li>
                   <b>Somewhat Sustainable:</b> Uses some sustainable business
                   practices or materials

@@ -36,9 +36,13 @@ export default class App extends Component {
         <p className="mission">
           Want to live more sustainably, but not sure what resources are
           available? <br />
-          <br /> Shop sustainably is a collection of stores that are making
-          efforts to be more sustainable. Know of a sustainable store that more
-          people should know about? Add it to the list!
+          <br /> Shop Sustainably is a collection of stores that are making
+          efforts to be more sustainable. This can include eliminating waste in
+          their supply chain and business practices, creating sustainable
+          alternatives to traditionally wasteful products, donating proceeds to
+          environmentally concious non-profits, or up-cycling. Know of a
+          sustainable store that more people should know about? Add it to the
+          list!
         </p>
         <br />
         <p>
