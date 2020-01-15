@@ -1,28 +1,31 @@
-
-
-#comments{
-    max-width: 600px;
+#comments {
+  max-width: 600px;
 }
 
-textarea,input,select,select>option{
-    font-size: 14px;
-    background: white;
-    border: rgb(1, 1, 114) 1.5px solid;
-    border-radius: 1%;
+textarea,
+input,
+select,
+select > option {
+  font-size: 14px;
+  background: white;
+  border: rgb(1, 1, 114) 1.5px solid;
+  border-radius: 1%;
+  color: black;
 }
-
 
 .navButton:focus {
-    border-color: rgba(1, 1, 114, 0.653);
-    box-shadow: 0 0 1px 3px rgb(1, 1, 114);
-    box-shadow: 0 0 0 3px -moz-mac-focusring;
-    color: #222; 
-    outline: none;
+  border-color: rgba(1, 1, 114, 0.653);
+  box-shadow: 0 0 1px 3px rgb(1, 1, 114);
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: #222;
+  outline: none;
 }
-select:hover, select:focus {
-   background:  rgb(1, 1, 114);
-   color: white
+select:hover,
+select:focus {
+  background: rgb(1, 1, 114);
+  color: white;
 }
-#sustainabilityOptions{
-   padding: 0;
+
+#sustainabilityOptions {
+  padding: 0;
 }
