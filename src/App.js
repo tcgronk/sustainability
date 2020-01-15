@@ -20,7 +20,8 @@ export default class App extends Component {
       categories: [],
       ratings: [],
       packagings: [],
-      saved: ""
+      saved: "",
+      loader: true
     };
   }
   static contextType = ApiContext;
@@ -87,7 +88,10 @@ export default class App extends Component {
         ]);
       })
       .then(([stores, categories, packagings, ratings]) => {
-        this.setState({ stores, categories, packagings, ratings });
+        setTimeout(
+          () => this.setState({ stores, categories, packagings, ratings }),
+          3500
+        );
       })
       .catch(error => {
         console.error({ error });
@@ -119,39 +123,40 @@ export default class App extends Component {
   }
   render() {
     if (this.state.categories.length > 0) {
-    }
-    return (
-      <ApiContext.Provider
-        value={{
-          stores: this.state.stores,
-          categories: this.state.categories,
-          ratings: this.state.ratings,
-          packagings: this.state.packagings,
-          handleAddStore: this.handleAddStore,
-          handleDeleteStore: this.handleDeleteStore
-        }}
-      >
-        <div className="App">
-          <header className="App-header">
-            <Nav />
-          </header>
+      return (
+        <ApiContext.Provider
+          value={{
+            stores: this.state.stores,
+            categories: this.state.categories,
+            ratings: this.state.ratings,
+            packagings: this.state.packagings,
+            handleAddStore: this.handleAddStore,
+            handleDeleteStore: this.handleDeleteStore
+          }}
+        >
+          <div className="App">
+            <header className="App-header">
+              <Nav />
+            </header>
 
-          <main>
-            <br />
-            <h3>{this.state.saved}</h3>
-            <span>{this.renderMainRoutes()}</span>
-          </main>
-        </div>
-      </ApiContext.Provider>
-    );
+            <main>
+              <br />
+              <h3>{this.state.saved}</h3>
+              <span>{this.renderMainRoutes()}</span>
+            </main>
+          </div>
+        </ApiContext.Provider>
+      );
+    }
     return (
       <>
         <header className="App-header">
           <Nav />
         </header>
         <div className="Loader">
+          <br />
           <p>Finding sustainable resources...</p>
-          <img className="LoaderImg" src={monstrera} />
+          <img className="LoaderImg" src={monstrera} alt="monstrera" />
         </div>
       </>
     );

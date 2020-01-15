@@ -46,7 +46,10 @@ export default class AllStores extends Component {
                   ) : null
                 )}
                 <br />
-                <li>Date Added: {store.lastdatemodified.slice(0, 10)}</li>
+                <li>
+                  Date Added: <br />
+                  {store.lastdatemodified.slice(0, 10)}
+                </li>
 
                 <br />
               </>
