@@ -1,6 +1,6 @@
 .card-container {
   width: 80%;
-  overflow: scroll;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   display: grid;
@@ -13,7 +13,6 @@ ul {
 .card {
   width: 100%;
   padding: 0px;
-  height: 100%;
 }
 .Stores {
   width: 80%;
@@ -23,8 +22,10 @@ ul {
 
 @media only screen and (min-width: 600px) {
   .cards {
-    display: flex;
+    display: grid;
     justify-content: center;
+    grid-template-columns: auto auto auto;
+    grid-gap: 28px;
   }
   .card {
     width: 300px;
@@ -35,15 +36,13 @@ ul {
     box-shadow: 6px 3px 12px 2px rgba(black, 0.6);
     transition: 0.2s;
   }
-  .card:not(:first-child) {
-    margin-left: -8rem;
-  }
+
   .card:hover,
   .card:focus-within {
     transform: translateY(-1rem);
   }
   .Stores {
-    width: 60%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
