@@ -10,6 +10,7 @@ import AllStores from "./AllStores/AllStores";
 import Stores from "./Stores/Stores";
 import config from "./config";
 import ErrorBoundary from "./ErrorBoundary";
+import monstrera from "./monstrera.png";
 
 export default class App extends Component {
   constructor(props) {
@@ -117,6 +118,8 @@ export default class App extends Component {
     );
   }
   render() {
+    if (this.state.categories.length > 0) {
+    }
     return (
       <ApiContext.Provider
         value={{
@@ -140,6 +143,17 @@ export default class App extends Component {
           </main>
         </div>
       </ApiContext.Provider>
+    );
+    return (
+      <>
+        <header className="App-header">
+          <Nav />
+        </header>
+        <div className="Loader">
+          <p>Finding sustainable resources...</p>
+          <img className="LoaderImg" src={monstrera} />
+        </div>
+      </>
     );
   }
 }

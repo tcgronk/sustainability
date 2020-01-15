@@ -26,13 +26,13 @@ library.add(
   faFootballBall
 );
 
-export default class App extends Component {
+export default class CategoryList extends Component {
   static contextType = ApiContext;
 
   render() {
     const categories = this.context.categories;
     return (
-      <div className="List">
+      <div className="CategoryList">
         <p className="mission">
           Want to live more sustainably, but not sure what resources are
           available? <br />
