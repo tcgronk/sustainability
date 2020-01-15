@@ -90,7 +90,7 @@ export default class App extends Component {
       .then(([stores, categories, packagings, ratings]) => {
         setTimeout(
           () => this.setState({ stores, categories, packagings, ratings }),
-          3500
+          2800
         );
       })
       .catch(error => {

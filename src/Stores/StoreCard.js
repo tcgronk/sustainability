@@ -51,6 +51,7 @@ export default class StoreCard extends Component {
     return (
       <div className="card-container">
         <div className="cards">
+          {result.length === 0 ? <li>No stores added yet!</li> : null}
           {result.map(store => (
             <ul key={store.storeid} className="card">
               <div>
