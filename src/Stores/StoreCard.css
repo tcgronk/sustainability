@@ -24,7 +24,7 @@ ul {
   .cards {
     display: grid;
     justify-content: center;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto;
     grid-gap: 28px;
   }
   .card {
@@ -45,6 +45,17 @@ ul {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .cards {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .cards {
+    grid-template-columns: auto auto auto;
   }
 }
 
