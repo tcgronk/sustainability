@@ -1,5 +1,5 @@
 # Shop Sustainably 
-### [Link to Web App](sustainability.now.sh)
+### [Link to Web App](https://sustainability.tessgronski.now.sh/)
 *This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
 <br/>
 ![home](nav.png)
