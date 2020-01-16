@@ -4,6 +4,7 @@
 
 Shop Sustainably is a collection of retail stores that sell sustainable products or offer sustainable alternatives. Users looking for new sustainable stores to check out, can navigate Shop Sustainably by category of interest: 
 
+![categories](categories.png)
 
 
 ### Front End Technologies Used: 
