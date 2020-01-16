@@ -25,29 +25,31 @@ h1 {
   animation-name: loader-animation;
   animation-duration: 2.5s;
   animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
 }
 @keyframes loader-animation {
   0% {
-    transform: rotate(0deg);
+    transform: scaleX(1);
+  }
+  5% {
+    transform: scale(0.9);
   }
   10% {
-    transform: rotate(-1deg);
+    transform: scale(0.8);
   }
   20% {
-    transform: rotate(7deg);
+    transform: scale(0.9);
   }
   30% {
-    transform: rotate(-3deg);
+    transform: scale(0.8);
   }
   40% {
-    transform: rotate(2deg);
+    transform: scale(0.9);
   }
   50% {
-    transform: rotate(-2deg);
+    transform: scale(0.8);
   }
   100% {
-    transform: rotate(3deg);
+    transform: scale(0.9);
   }
 }
 
