@@ -37,15 +37,8 @@ export default class CategoryList extends Component {
           Want to live more sustainably, but not sure what resources are
           available? <br />
           <br /> Shop Sustainably is a collection of stores that are making
-          efforts to be more sustainable. This can include eliminating waste in
-          their supply chain and business practices, creating sustainable
-          alternatives to traditionally wasteful products, donating proceeds to
-          environmentally concious non-profits, or up-cycling. Know of a
-          sustainable store that more people should know about? Add it to the
-          list!
-        </p>
-        <br />
-        <p>
+          efforts to be more sustainable.
+          <br /> <br />
           Find sustainable stores by selecting a category below or{" "}
           <Link to="/addstore">add new stores here </Link>to the list!
         </p>
@@ -69,6 +62,13 @@ export default class CategoryList extends Component {
 
           <br />
         </ul>
+        <p className="mission">
+          Sustainability can include eliminating waste in their supply chain and
+          business practices, creating sustainable alternatives to traditionally
+          wasteful products, donating proceeds to environmentally concious
+          non-profits, or up-cycling. Know of a sustainable store that more
+          people should know about? Add it to the list!
+        </p>
       </div>
     );
   }
