@@ -75,7 +75,7 @@ export default class App extends Component {
         }
         this.setState({
           stores: stores,
-          saved: `${store.storename} is re-saved to ${store.category}`
+          saved: `${store.storename} is re-saved to ${category}`
         });
       })
       .catch(error => {
