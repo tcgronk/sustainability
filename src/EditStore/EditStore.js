@@ -104,7 +104,7 @@ export default class EditStore extends Component {
       categoriesid: parseInt(e.target["categories"].value, 10),
       ratingsid: parseInt(e.target["storeRating"].value, 10)
     };
-    const url = `${config.API_ENDPOINT}/api/stores/:${store.storeid}`;
+    const url = `${config.API_ENDPOINT}/api/stores/${store.storeid}`;
     const options = {
       method: "PUT",
       body: JSON.stringify(store)
@@ -113,7 +113,6 @@ export default class EditStore extends Component {
     if (this.state.formValid === true) {
       fetch(url, options)
         .then(res => {
-          console.log(res);
           if (!res.ok) {
             return res.json().then(e => Promise.reject(e));
           }
