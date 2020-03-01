@@ -116,8 +116,7 @@ export default class EditStore extends Component {
           if (!res.ok) {
             return res.json().then(e => Promise.reject(e));
           }
-          console.log(res);
-          return res.json({ store: store });
+          return console.log(`This is the new ${store}`);
         })
         .then(() => {
           this.context.handleEditStore(store);
