@@ -106,7 +106,7 @@ export default class EditStore extends Component {
     };
     const url = `${config.API_ENDPOINT}/api/stores/${store.storeid}`;
     const options = {
-      method: "PATCH",
+      method: "PUT",
       body: JSON.stringify(store),
       headers: {
         "Content-Type": "application/json"
