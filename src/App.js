@@ -55,7 +55,7 @@ export default class App extends Component {
       });
   };
   handleEditStore = store => {
-    fetch(`${config.API_ENDPOINT}/api/stores/:${store.storeid}`, {
+    fetch(`${config.API_ENDPOINT}/api/stores/${store.storeid}`, {
       method: "GET",
       headers: {
         "content-type": "application/json"
