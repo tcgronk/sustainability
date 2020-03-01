@@ -55,7 +55,7 @@ export default class App extends Component {
       });
   };
   handleEditStore = store => {
-    fetch(`${config.API_ENDPOINT}/api/stores/${store.storeid}`, {
+    fetch(`${config.API_ENDPOINT}/api/stores`, {
       method: "GET",
       headers: {
         "content-type": "application/json"
@@ -67,15 +67,9 @@ export default class App extends Component {
         return res.json();
       })
       .then(stores => {
-        let category = "All";
-        for (let i = 0; i < this.state.categories.length; i++) {
-          if (store.categoriesid === this.state.categories[i].categoriesid) {
-            category = this.state.categories[i].categoriesdescription;
-          }
-        }
         this.setState({
-          stores: stores,
-          saved: `${store.storename} is re-saved to ${category}`
+          stores: { stores },
+          saved: `${store.storename} is re-saved to ${store.category}`
         });
       })
       .catch(error => {
