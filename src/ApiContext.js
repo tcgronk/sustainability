@@ -7,5 +7,6 @@ export default React.createContext({
   packagings: [],
   handleAddStore: () => {},
   handleDeleteStore: () => {},
-  handleCount: () => {}
+  handleCount: () => {},
+  handleEditStore: () => {}
 });

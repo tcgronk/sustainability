@@ -8,6 +8,7 @@ import CategoryList from "./CategoryStoreList/CategoryList.js";
 import ApiContext from "./ApiContext";
 import AllStores from "./AllStores/AllStores";
 import Stores from "./Stores/Stores";
+import EditStore from "./EditStore/EditStore";
 import config from "./config";
 import ErrorBoundary from "./ErrorBoundary";
 import monstrera from "./monstrera.png";
@@ -35,7 +36,6 @@ export default class App extends Component {
     })
       .then(res => {
         if (!res.ok) return res.json().then(e => Promise.reject(e));
-
         return res.json();
       })
       .then(stores => {
@@ -48,6 +48,35 @@ export default class App extends Component {
         this.setState({
           stores: stores,
           saved: `${store.storename} is saved to ${category}`
+        });
+      })
+      .catch(error => {
+        console.error({ error });
+      });
+  };
+  handleEditStore = store => {
+    fetch(`${config.API_ENDPOINT}/api/stores/:${store.storeid}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+      .then(res => {
+        console.log(res);
+        if (!res.ok) return res.json().then(e => Promise.reject(e));
+
+        return res.json();
+      })
+      .then(stores => {
+        let category = "All";
+        for (let i = 0; i < this.state.categories.length; i++) {
+          if (store.categoriesid === this.state.categories[i].categoriesid) {
+            category = this.state.categories[i].categoriesdescription;
+          }
+        }
+        this.setState({
+          stores: stores,
+          saved: `${store.storename} is re-saved to ${category}`
         });
       })
       .catch(error => {
@@ -117,6 +146,9 @@ export default class App extends Component {
           {["/category/:id"].map(path => (
             <Route exact key={path} path={path} component={CategoryStoreList} />
           ))}
+          {["/editstore/:id"].map(path => (
+            <Route exact key={path} path={path} component={EditStore} />
+          ))}
         </ErrorBoundary>
       </span>
     );
@@ -131,7 +163,8 @@ export default class App extends Component {
             ratings: this.state.ratings,
             packagings: this.state.packagings,
             handleAddStore: this.handleAddStore,
-            handleDeleteStore: this.handleDeleteStore
+            handleDeleteStore: this.handleDeleteStore,
+            handleEditStore: this.handleEditStore
           }}
         >
           <div className="App">

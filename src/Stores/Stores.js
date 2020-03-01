@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import config from "../config";
+import { Link } from "react-router-dom";
 
 export default class Stores extends Component {
   static contextType = ApiContext;
@@ -10,7 +11,6 @@ export default class Stores extends Component {
     const storeid = parseInt(this.props.match.params.id.slice(1), 10);
     fetch(`${config.API_ENDPOINT}/api/stores/${storeid}`, {
       method: "DELETE",
-
       headers: {
         "content-type": "application/json"
       }
@@ -89,14 +89,26 @@ export default class Stores extends Component {
                 </li>
 
                 <br />
-
-                <button
-                  className="storeDelete"
-                  type="button"
-                  onClick={this.handleClickDelete}
-                >
-                  Delete Store
-                </button>
+                <span className="buttons">
+                  <button
+                    className="storeDelete"
+                    type="button"
+                    onClick={this.handleClickDelete}
+                  >
+                    Delete Store
+                  </button>
+                  <br />
+                  {storeArr.map(store => (
+                    <Link
+                      key={store.storeid}
+                      to={`/editstore/:${store.storeid}`}
+                    >
+                      <button className="storeDelete" type="button">
+                        Edit Store
+                      </button>
+                    </Link>
+                  ))}
+                </span>
               </>
             </div>
           </ul>
