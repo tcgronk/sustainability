@@ -62,7 +62,6 @@ export default class App extends Component {
       }
     })
       .then(res => {
-        console.log(res);
         if (!res.ok) return res.json().then(e => Promise.reject(e));
 
         return res.json();
