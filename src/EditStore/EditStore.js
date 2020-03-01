@@ -104,7 +104,7 @@ export default class EditStore extends Component {
       categoriesid: parseInt(e.target["categories"].value, 10),
       ratingsid: parseInt(e.target["storeRating"].value, 10)
     };
-    const url = `${config.API_ENDPOINT}/api/stores/:${store.storeid}`;
+    const url = `${config.API_ENDPOINT}/api/stores/${store.storeid}`;
     const options = {
       method: "PATCH",
       body: JSON.stringify(store),
