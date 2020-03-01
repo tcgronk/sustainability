@@ -67,8 +67,14 @@ export default class App extends Component {
         return res.json();
       })
       .then(stores => {
+        let category = "All";
+        for (let i = 0; i < this.state.categories.length; i++) {
+          if (store.categoriesid === this.state.categories[i].categoriesid) {
+            category = this.state.categories[i].categoriesdescription;
+          }
+        }
         this.setState({
-          stores: { stores },
+          stores: stores,
           saved: `${store.storename} is re-saved to ${store.category}`
         });
       })
