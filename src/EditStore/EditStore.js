@@ -107,7 +107,7 @@ export default class EditStore extends Component {
     const url = `${config.API_ENDPOINT}/api/stores/${store.storeid}`;
     const options = {
       method: "PUT",
-      body: JSON.stringify(store)
+      body: JSON.stringify(store.storeid)
     };
 
     if (this.state.formValid === true) {
