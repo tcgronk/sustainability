@@ -83,7 +83,7 @@ export default class Stores extends Component {
                 )}
                 <br />
                 <li>
-                  Date Added:
+                  Last Date Modified:
                   <br />
                   {store.lastdatemodified.slice(0, 10)}
                 </li>
