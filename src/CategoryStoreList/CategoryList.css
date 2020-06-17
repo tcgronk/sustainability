@@ -13,8 +13,7 @@
   display: grid;
   grid-template-columns: auto auto;
   max-width: 75%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 0;
 }
 .mission {
@@ -26,7 +25,7 @@
 @media only screen and (min-width: 750px) {
   .grid {
     grid-template-columns: auto auto auto auto;
-    grid-gap: 20px;
+    grid-gap: 10px;
   }
   .icon {
     font-size: 55px;
@@ -38,7 +37,7 @@
   }
   .Sustainability-facts-text,
   .definition {
-    margin-top: 15%;
+    margin-top: 10%;
   }
 }
 
@@ -47,6 +46,7 @@
   width: 70%;
   display: flex;
   margin: 0 auto;
+  font-size: 20px;
 }
 
 @media only screen and (max-width: 749px) {
@@ -54,5 +54,6 @@
   .Sustainability-definition {
     display: flex;
     flex-direction: column;
+    font-size: 18px;
   }
 }
