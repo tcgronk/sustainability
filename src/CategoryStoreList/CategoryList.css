@@ -1,37 +1,58 @@
-.iconButton{
+.iconButton {
   width: 75px;
   text-align: center;
-  background:white;
+  background: white;
   border: none;
-  
 }
-.icon{
-    font-size:50px;
-    color: rgb(1, 1, 114);
-}
-
-.grid{
-   display: grid;
-   grid-template-columns: auto auto;
-   max-width: 75%;
-   margin-left: auto;
-   margin-right: auto;
-   padding: 0;
-}
-.mission{
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+.icon {
+  font-size: 50px;
+  color: #0d6135;
 }
 
-@media only screen and (min-width: 500px) {
-    .grid{
-        grid-template-columns: auto auto auto auto; 
-          grid-gap: 20px;
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+.mission {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    }
-    .icon{
-        font-size:55px;
-    }
+@media only screen and (min-width: 750px) {
+  .grid {
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 20px;
+  }
+  .icon {
+    font-size: 55px;
+  }
+  .Sustainability-facts,
+  .Sustainability-definition {
+    display: flex;
+    flex-direction: row;
+  }
+  .Sustainability-facts-text,
+  .definition {
+    margin-top: 15%;
+  }
+}
 
+.Sustainability-facts,
+.Sustainability-definition {
+  width: 70%;
+  display: flex;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 749px) {
+  .Sustainability-facts,
+  .Sustainability-definition {
+    display: flex;
+    flex-direction: column;
+  }
 }

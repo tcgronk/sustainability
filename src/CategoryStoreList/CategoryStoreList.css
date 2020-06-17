@@ -1,37 +1,32 @@
-.CategoryStoreList{
-    min-height: 100vh;
-   
+.CategoryStoreList {
+  min-height: 100vh;
 }
-.filter-section{
-    display: grid;
-    grid-gap: 10px;
-    grid-auto-columns: auto auto;
-    grid-auto-rows: auto ;
-    margin-left: auto;
-    margin-right: auto;
-    width: 85%;
+.filter-section {
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-columns: auto auto;
+  grid-auto-rows: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
 }
 
-
-.gridItem{
-    grid-row: 1;
-    height: 35px;
-    text-align: center;
-
+.gridItem {
+  grid-row: 1;
+  height: 35px;
+  text-align: center;
 }
-.field{
-    width: auto
+.field {
+  width: auto;
 }
-.categoryTitle{
-    color: rgb(1, 1, 114);
-    font-size: 30px;
-    text-align: center;
+.categoryTitle {
+  color: #1d4000;
+  font-size: 30px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 500px) {
-
-    .filter-section{
-        width: 40%;
-    }
-    
+  .filter-section {
+    width: 40%;
+  }
 }

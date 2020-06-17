@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ApiContext from "../ApiContext";
+import Sustainabilityfacts from "./Sustainabilityfacts";
+import Sustainabilitydefinition from "./Sustainabilitydefinition";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -62,13 +64,8 @@ export default class CategoryList extends Component {
 
           <br />
         </ul>
-        <p className="mission">
-          Sustainability can include eliminating waste in their supply chain and
-          business practices, creating sustainable alternatives to traditionally
-          wasteful products, donating proceeds to environmentally concious
-          non-profits, or up-cycling. Know of a sustainable store that more
-          people should know about? Add it to the list!
-        </p>
+        <Sustainabilityfacts />
+        <Sustainabilitydefinition />
       </div>
     );
   }

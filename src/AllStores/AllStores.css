@@ -13,11 +13,11 @@
   }
 
   .allStoreList {
-    border: rgb(1, 1, 114) solid 2px;
+    border: #831b8c solid 2px;
   }
   .allStoreList:hover,
   .allStoreList:hover h3 {
-    background: rgb(1, 1, 114);
+    background: #831b8c;
     color: white;
   }
 }

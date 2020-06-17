@@ -8,21 +8,21 @@ select,
 select > option {
   font-size: 14px;
   background: white;
-  border: rgb(1, 1, 114) 1.5px solid;
+  border: #1d4000 1.5px solid;
   border-radius: 1%;
   color: black;
 }
 
 .navButton:focus {
-  border-color: rgba(1, 1, 114, 0.653);
-  box-shadow: 0 0 1px 3px rgb(1, 1, 114);
+  border-color: rgba(32, 20, 140, 0.673);
+  box-shadow: 0 0 1px 3px #1f148c;
   box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #222;
   outline: none;
 }
 select:hover,
 select:focus {
-  background: rgb(1, 1, 114);
+  background: #1d4000;
   color: white;
 }
 
