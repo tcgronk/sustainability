@@ -110,3 +110,10 @@ main {
     width: 350px;
   }
 }
+
+@media screen and (max-width: 360px) {
+  .App-header {
+height: 195px
+  }
+
+}
